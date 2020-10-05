@@ -15,6 +15,8 @@
 		E04AFA1E2521918B009E9F9A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E04AFA1C2521918B009E9F9A /* LaunchScreen.storyboard */; };
 		E04AFA292521918B009E9F9A /* StoreAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E04AFA282521918B009E9F9A /* StoreAppTests.swift */; };
 		E04AFA342521918B009E9F9A /* StoreAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E04AFA332521918B009E9F9A /* StoreAppUITests.swift */; };
+		E04AFA482521BF6C009E9F9A /* VerifyTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E04AFA472521BF6C009E9F9A /* VerifyTextView.swift */; };
+		E0C6D86F252979EA00A834E2 /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C6D86E252979EA00A834E2 /* Validator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +51,8 @@
 		E04AFA2F2521918B009E9F9A /* StoreAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StoreAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E04AFA332521918B009E9F9A /* StoreAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreAppUITests.swift; sourceTree = "<group>"; };
 		E04AFA352521918B009E9F9A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E04AFA472521BF6C009E9F9A /* VerifyTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyTextView.swift; sourceTree = "<group>"; };
+		E0C6D86E252979EA00A834E2 /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,9 +103,11 @@
 		E04AFA102521918A009E9F9A /* StoreApp */ = {
 			isa = PBXGroup;
 			children = (
+				E04AFA462521BF4A009E9F9A /* View */,
+				E04AFA452521BF40009E9F9A /* Controller */,
+				E04AFA442521BF3A009E9F9A /* Model */,
 				E04AFA112521918A009E9F9A /* AppDelegate.swift */,
 				E04AFA132521918A009E9F9A /* SceneDelegate.swift */,
-				E04AFA152521918A009E9F9A /* ViewController.swift */,
 				E04AFA172521918A009E9F9A /* Main.storyboard */,
 				E04AFA1A2521918B009E9F9A /* Assets.xcassets */,
 				E04AFA1C2521918B009E9F9A /* LaunchScreen.storyboard */,
@@ -126,6 +132,30 @@
 				E04AFA352521918B009E9F9A /* Info.plist */,
 			);
 			path = StoreAppUITests;
+			sourceTree = "<group>";
+		};
+		E04AFA442521BF3A009E9F9A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E0C6D86E252979EA00A834E2 /* Validator.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		E04AFA452521BF40009E9F9A /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				E04AFA152521918A009E9F9A /* ViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		E04AFA462521BF4A009E9F9A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E04AFA472521BF6C009E9F9A /* VerifyTextView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -258,6 +288,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E04AFA482521BF6C009E9F9A /* VerifyTextView.swift in Sources */,
+				E0C6D86F252979EA00A834E2 /* Validator.swift in Sources */,
 				E04AFA162521918A009E9F9A /* ViewController.swift in Sources */,
 				E04AFA122521918A009E9F9A /* AppDelegate.swift in Sources */,
 				E04AFA142521918A009E9F9A /* SceneDelegate.swift in Sources */,
