@@ -19,7 +19,7 @@ class StoreAppTests: XCTestCase {
     override func tearDownWithError() throws {
     }
 
-    func test_id_verify_available() throws {
+    func test_id_verify_success() throws {
         XCTAssertEqual(ValidatorMessage.validId, validator.id(input: "chaehk95"))
     }
 
@@ -72,6 +72,26 @@ class StoreAppTests: XCTestCase {
     }
     func test_password_verify_fail_notInclude_space2() throws {
         XCTAssertEqual(ValidatorMessage.invalidIncludeSpace, validator.password(input: " asdffesFD12"))
+    }
+    
+    func test_id_verify_fail_empty() throws {
+        XCTAssertEqual(ValidatorMessage.emptyId, validator.id(input: ""))
+    }
+    
+    func test_password_verify_fail_empty() throws {
+        XCTAssertEqual(ValidatorMessage.emptyPassword, validator.password(input: ""))
+    }
+    
+    func test_name_verify_fail_empty() throws {
+        XCTAssertEqual(ValidatorMessage.emptyName, validator.name(input: ""))
+    }
+    
+    func test_name_verify_fail_special() throws {
+        XCTAssertEqual(ValidatorMessage.invaildNameSpecial, validator.name(input: "훈기^"))
+    }
+    
+    func test_name_verify_fail_number() throws {
+        XCTAssertEqual(ValidatorMessage.invaildNameNumber, validator.name(input: "훈기6"))
     }
 }
 
