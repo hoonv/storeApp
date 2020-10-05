@@ -7,14 +7,24 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E0172C87252AF56200A91671 /* SecureVerifyTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0172C86252AF56200A91671 /* SecureVerifyTextView.swift */; };
+		E0172C8C252AF69B00A91671 /* VerifyTextView+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0172C8B252AF69B00A91671 /* VerifyTextView+extension.swift */; };
+		E0172C9D252B0E4E00A91671 /* VerifyTextViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0172C9C252B0E4E00A91671 /* VerifyTextViewDelegate.swift */; };
+		E0172CA2252B0E7100A91671 /* VerifyTextViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0172CA1252B0E7100A91671 /* VerifyTextViewDataSource.swift */; };
+		E0172CA7252B0EF000A91671 /* SignUpViewController+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0172CA6252B0EF000A91671 /* SignUpViewController+extension.swift */; };
+		E0172CB3252B0F3500A91671 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0172CB2252B0F3500A91671 /* Notification.swift */; };
+		E0172CB8252B16EB00A91671 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0172CB7252B16EB00A91671 /* User.swift */; };
+		E0172CBD252B25A200A91671 /* ItemListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0172CBC252B25A200A91671 /* ItemListViewController.swift */; };
 		E04AFA122521918A009E9F9A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E04AFA112521918A009E9F9A /* AppDelegate.swift */; };
 		E04AFA142521918A009E9F9A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E04AFA132521918A009E9F9A /* SceneDelegate.swift */; };
-		E04AFA162521918A009E9F9A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E04AFA152521918A009E9F9A /* ViewController.swift */; };
+		E04AFA162521918A009E9F9A /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E04AFA152521918A009E9F9A /* SignUpViewController.swift */; };
 		E04AFA192521918A009E9F9A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E04AFA172521918A009E9F9A /* Main.storyboard */; };
 		E04AFA1B2521918B009E9F9A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E04AFA1A2521918B009E9F9A /* Assets.xcassets */; };
 		E04AFA1E2521918B009E9F9A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E04AFA1C2521918B009E9F9A /* LaunchScreen.storyboard */; };
 		E04AFA292521918B009E9F9A /* StoreAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E04AFA282521918B009E9F9A /* StoreAppTests.swift */; };
 		E04AFA342521918B009E9F9A /* StoreAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E04AFA332521918B009E9F9A /* StoreAppUITests.swift */; };
+		E04AFA482521BF6C009E9F9A /* VerifyTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E04AFA472521BF6C009E9F9A /* VerifyTextView.swift */; };
+		E0C6D86F252979EA00A834E2 /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C6D86E252979EA00A834E2 /* Validator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,10 +45,18 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E0172C86252AF56200A91671 /* SecureVerifyTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureVerifyTextView.swift; sourceTree = "<group>"; };
+		E0172C8B252AF69B00A91671 /* VerifyTextView+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VerifyTextView+extension.swift"; sourceTree = "<group>"; };
+		E0172C9C252B0E4E00A91671 /* VerifyTextViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyTextViewDelegate.swift; sourceTree = "<group>"; };
+		E0172CA1252B0E7100A91671 /* VerifyTextViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyTextViewDataSource.swift; sourceTree = "<group>"; };
+		E0172CA6252B0EF000A91671 /* SignUpViewController+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SignUpViewController+extension.swift"; sourceTree = "<group>"; };
+		E0172CB2252B0F3500A91671 /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
+		E0172CB7252B16EB00A91671 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		E0172CBC252B25A200A91671 /* ItemListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListViewController.swift; sourceTree = "<group>"; };
 		E04AFA0E2521918A009E9F9A /* StoreApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StoreApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E04AFA112521918A009E9F9A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E04AFA132521918A009E9F9A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		E04AFA152521918A009E9F9A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		E04AFA152521918A009E9F9A /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		E04AFA182521918A009E9F9A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E04AFA1A2521918B009E9F9A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E04AFA1D2521918B009E9F9A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -49,6 +67,8 @@
 		E04AFA2F2521918B009E9F9A /* StoreAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StoreAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E04AFA332521918B009E9F9A /* StoreAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreAppUITests.swift; sourceTree = "<group>"; };
 		E04AFA352521918B009E9F9A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E04AFA472521BF6C009E9F9A /* VerifyTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyTextView.swift; sourceTree = "<group>"; };
+		E0C6D86E252979EA00A834E2 /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +96,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E0172CB1252B0F2500A91671 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				E0172CB2252B0F3500A91671 /* Notification.swift */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
 		E04AFA052521918A009E9F9A = {
 			isa = PBXGroup;
 			children = (
@@ -99,9 +127,12 @@
 		E04AFA102521918A009E9F9A /* StoreApp */ = {
 			isa = PBXGroup;
 			children = (
+				E04AFA462521BF4A009E9F9A /* View */,
+				E04AFA452521BF40009E9F9A /* Controller */,
+				E04AFA442521BF3A009E9F9A /* Model */,
+				E0172CB1252B0F2500A91671 /* Util */,
 				E04AFA112521918A009E9F9A /* AppDelegate.swift */,
 				E04AFA132521918A009E9F9A /* SceneDelegate.swift */,
-				E04AFA152521918A009E9F9A /* ViewController.swift */,
 				E04AFA172521918A009E9F9A /* Main.storyboard */,
 				E04AFA1A2521918B009E9F9A /* Assets.xcassets */,
 				E04AFA1C2521918B009E9F9A /* LaunchScreen.storyboard */,
@@ -126,6 +157,37 @@
 				E04AFA352521918B009E9F9A /* Info.plist */,
 			);
 			path = StoreAppUITests;
+			sourceTree = "<group>";
+		};
+		E04AFA442521BF3A009E9F9A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E0C6D86E252979EA00A834E2 /* Validator.swift */,
+				E0172CB7252B16EB00A91671 /* User.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		E04AFA452521BF40009E9F9A /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				E04AFA152521918A009E9F9A /* SignUpViewController.swift */,
+				E0172CA6252B0EF000A91671 /* SignUpViewController+extension.swift */,
+				E0172CBC252B25A200A91671 /* ItemListViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		E04AFA462521BF4A009E9F9A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E04AFA472521BF6C009E9F9A /* VerifyTextView.swift */,
+				E0172C8B252AF69B00A91671 /* VerifyTextView+extension.swift */,
+				E0172C9C252B0E4E00A91671 /* VerifyTextViewDelegate.swift */,
+				E0172CA1252B0E7100A91671 /* VerifyTextViewDataSource.swift */,
+				E0172C86252AF56200A91671 /* SecureVerifyTextView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -258,9 +320,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E04AFA162521918A009E9F9A /* ViewController.swift in Sources */,
+				E04AFA482521BF6C009E9F9A /* VerifyTextView.swift in Sources */,
+				E0172C87252AF56200A91671 /* SecureVerifyTextView.swift in Sources */,
+				E0172C8C252AF69B00A91671 /* VerifyTextView+extension.swift in Sources */,
+				E0C6D86F252979EA00A834E2 /* Validator.swift in Sources */,
+				E04AFA162521918A009E9F9A /* SignUpViewController.swift in Sources */,
 				E04AFA122521918A009E9F9A /* AppDelegate.swift in Sources */,
+				E0172CA7252B0EF000A91671 /* SignUpViewController+extension.swift in Sources */,
+				E0172CA2252B0E7100A91671 /* VerifyTextViewDataSource.swift in Sources */,
+				E0172CBD252B25A200A91671 /* ItemListViewController.swift in Sources */,
+				E0172CB8252B16EB00A91671 /* User.swift in Sources */,
+				E0172CB3252B0F3500A91671 /* Notification.swift in Sources */,
 				E04AFA142521918A009E9F9A /* SceneDelegate.swift in Sources */,
+				E0172C9D252B0E4E00A91671 /* VerifyTextViewDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
