@@ -18,11 +18,11 @@ class VerifyTextView: UIView {
     private let message = UILabel()
     private let iconView = UIImageView(frame: CGRect(x: 10, y: 5, width: 20, height: 20))
     
+    private let defaultColor = UIColor(named: "TextFieldDefaultColor")
     private let failColor = UIColor(named: "TextFieldFailColor")
     private let successBorder = UIColor(named: "TextFieldPassBorderColor")
     private let successColor = UIColor(named: "TextFieldPassColor")
     private let failBorder = UIColor.systemRed
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         commonInit()
@@ -44,8 +44,8 @@ class VerifyTextView: UIView {
         textField.leftViewMode = .always
         textField.delegate = self
         textField.layer.cornerRadius = 10
-        textField.backgroundColor = UIColor(named: "TextFieldDefaultColor")
-        textField.layer.borderColor = UIColor(named: "TextFieldDefaultColor")?.cgColor
+        textField.backgroundColor = defaultColor
+        textField.layer.borderColor = defaultColor?.cgColor
         textField.layer.borderWidth = 2
         textField.placeholder = ""
         textField.translatesAutoresizingMaskIntoConstraints = false
@@ -53,6 +53,7 @@ class VerifyTextView: UIView {
         addSubview(textField)
         
         title.text = "title"
+        
         title.font = UIFont.systemFont(ofSize: 14, weight: .bold)
         title.textColor = .systemGray
         title.translatesAutoresizingMaskIntoConstraints = false
