@@ -20,6 +20,9 @@ class SignUpViewController: UIViewController {
         view.backgroundColor = UIColor(named: "BackgroundColor")
         setupTextField()
         nextButton.layer.cornerRadius = 5
+        if let user = loadUserInfo() {
+            print("화면이동")
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -44,6 +47,22 @@ class SignUpViewController: UIViewController {
         nameTextView.delegate = NameDelegate()
         nameTextView.dataSource = NameDataSource()
     }
+    
+    private func saveUserInfo() {
+        let id = idTextView.textField.text ?? ""
+        let password = firstPWTextView.textField.text ?? ""
+        let name = nameTextView.textField.text ?? ""
+    
+        let user = User(id: id, password: password, name: name)
+        let data = try? JSONEncoder().encode(user)
+        UserDefaults.standard.setValue(data, forKey: "userinfo")
+    }
+    
+    private func loadUserInfo() -> User? {
+        guard let data = UserDefaults.standard.data(forKey: "userinfo") else { return nil }
+        let user = try? JSONDecoder().decode(User.self, from: data)
+        return user
+    }
 
     @objc func keyboardWillShow(_ sender: Notification) {
         self.view.frame.origin.y = -100
@@ -59,7 +78,8 @@ class SignUpViewController: UIViewController {
     @IBAction func nextOnTouch(_ sender: Any) {
         if idTextView.isvalid() && firstPWTextView.isvalid()
             && secondPWTextView.isvalid() && nameTextView.isvalid(){
-            print("move")
+                saveUserInfo()
+            
         }
     }
 }
