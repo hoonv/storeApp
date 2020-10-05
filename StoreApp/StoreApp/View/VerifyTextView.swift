@@ -9,48 +9,51 @@ import UIKit
 
 class VerifyTextView: UIView {
     
+    public var dataSource: VerifyTextViewDataSource? {
+        didSet { setupUI() }
+    }
+    public var delegate: VerifyTextViewDelegate?
     private let title = UILabel()
-    private let textField = UITextField()
+    public let textField = UITextField()
     private let message = UILabel()
+    private let iconView = UIImageView(frame: CGRect(x: 10, y: 5, width: 20, height: 20))
     
-    private let failColor = UIColor(red: 255/255, green: 242/255, blue: 242/255, alpha: 1)
+    private let failColor = UIColor(named: "TextFieldFailColor")
+    private let successBorder = UIColor(named: "TextFieldPassBorderColor")
+    private let successColor = UIColor(named: "TextFieldPassColor")
     private let failBorder = UIColor.systemRed
-    private let successBorder = UIColor(red: 100/255, green: 219/255, blue: 208/255, alpha: 1)
-    private let successColor = UIColor(red: 241/255, green: 255/255, blue: 254/255, alpha: 1)
-    private let defaultColor = UIColor.white
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setupUI()
+        commonInit()
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-        setupUI()
+        commonInit()
     }
-
-    private func setupUI() {
+    
+    func commonInit() {
         self.backgroundColor = .clear
         
-        let iconView = UIImageView(frame: CGRect(x: 10, y: 5, width: 20, height: 20))
-        iconView.image = UIImage(named: "icon-tag")
         let iconContainerView: UIView = UIView(frame: CGRect(x: 20, y: 0, width: 40, height: 30))
+        iconView.image = UIImage(named: "icon-tag")
+        iconView.contentMode = .scaleAspectFit
         iconContainerView.addSubview(iconView)
-        
-        textField.layer.cornerRadius = 10
-        textField.backgroundColor = defaultColor
-        textField.layer.borderColor = defaultColor.cgColor
-        textField.layer.borderWidth = 2
-
-        textField.delegate = self
         textField.leftView = iconContainerView
-        textField.placeholder = "placeholder"
         textField.leftViewMode = .always
+        textField.delegate = self
+        textField.layer.cornerRadius = 10
+        textField.backgroundColor = UIColor(named: "TextFieldDefaultColor")
+        textField.layer.borderColor = UIColor(named: "TextFieldDefaultColor")?.cgColor
+        textField.layer.borderWidth = 2
+        textField.placeholder = ""
         textField.translatesAutoresizingMaskIntoConstraints = false
+        textField.textContentType = .oneTimeCode
         addSubview(textField)
         
-        title.text = "Id"
-        title.font = UIFont.systemFont(ofSize: 14, weight: .semibold)
+        title.text = "title"
+        title.font = UIFont.systemFont(ofSize: 14, weight: .bold)
         title.textColor = .systemGray
         title.translatesAutoresizingMaskIntoConstraints = false
         addSubview(title)
@@ -62,45 +65,67 @@ class VerifyTextView: UIView {
         
         NSLayoutConstraint.activate([
             title.topAnchor.constraint(equalTo: topAnchor, constant: 0),
-            title.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
-            title.heightAnchor.constraint(equalToConstant: 10),
+            title.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 0),
+            title.heightAnchor.constraint(equalToConstant: 20),
             
-            textField.topAnchor.constraint(equalTo: title.bottomAnchor, constant: 10),
-            textField.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
-            textField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
-            textField.heightAnchor.constraint(lessThanOrEqualToConstant: 50),
+            textField.topAnchor.constraint(equalTo: title.bottomAnchor, constant: 5),
+            textField.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 0),
+            textField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 0),
+            textField.bottomAnchor.constraint(equalTo: message.topAnchor, constant: -5),
             
-            message.topAnchor.constraint(equalTo: textField.bottomAnchor, constant: 5),
-            message.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -5),
-            message.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
+            message.heightAnchor.constraint(equalToConstant: 20),
+            message.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 0),
+            message.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 0),
         ])
+    }
+
+    private func verify(input: String) {
+        guard let msg = delegate?.verify(input: input) else { return }
+        
+        if msg == delegate?.pass {
+            textField.backgroundColor = successColor
+            textField.layer.borderColor = successBorder?.cgColor
+            iconView.image = dataSource?.passIcon() ?? UIImage(named: "icon-tag-cyan")
+            title.textColor = successBorder
+            message.textColor = successBorder
+            message.text = msg.rawValue
+        } else {
+            textField.backgroundColor = failColor
+            textField.layer.borderColor = failBorder.cgColor
+            iconView.image = dataSource?.failIcon() ?? UIImage(named: "icon-tag-red")
+            title.textColor = failBorder
+            message.textColor = failBorder
+            message.text = msg.rawValue
+        }
+    }
+    
+    public func isvalid() -> Bool {
+        let text = textField.text ?? ""
+        guard let msg = delegate?.verify(input: text ) else { return false }
+        
+        if msg == delegate?.pass {
+            return true
+        }
+        verify(input: text)
+        return false
+    }
+    
+    private func setupUI() {
+        iconView.image = dataSource?.defaultIcon() ?? UIImage(named: "icon-tag")
+        textField.placeholder = dataSource?.placeholder() ?? ""
+        title.text = dataSource?.title() ?? "title"
     }
 }
 
 
 extension VerifyTextView: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        print(textField.text ?? "")
         NotificationCenter.default.post(name: .UIKeyboardWillShow, object: nil)
     }
-    
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        print(textField.text ?? "")
-        guard let count = textField.text?.count else { return }
-        NotificationCenter.default.post(name: .UIKeyboardWillHide, object: nil)
 
-        if count > 5 {
-            textField.backgroundColor = failColor
-            textField.layer.borderColor = failBorder.cgColor
-            title.textColor = failBorder
-            message.textColor = failBorder
-            message.text = "fail"
-        } else {
-            textField.backgroundColor = successColor
-            textField.layer.borderColor = successBorder.cgColor
-            title.textColor = successBorder
-            message.textColor = successBorder
-        }
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        NotificationCenter.default.post(name: .UIKeyboardWillHide, object: nil)
+        verify(input: textField.text ?? "")
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -108,20 +133,4 @@ extension VerifyTextView: UITextFieldDelegate {
         textField.resignFirstResponder()
         return true
     }
-    func textFieldDidChangeSelection(_ textField: UITextField) {
-        print(textField.text ?? "")
-
-
-        print(1)
-    }
-}
-
-extension UILabel {
-  func addCharacterSpacing(kernValue: Double = 1.15) {
-    if let labelText = text, labelText.count > 0 {
-      let attributedString = NSMutableAttributedString(string: labelText)
-        attributedString.addAttribute(NSAttributedString.Key.kern, value: kernValue, range: NSRange(location: 0, length: attributedString.length - 1))
-      attributedText = attributedString
-    }
-  }
 }
