@@ -71,10 +71,13 @@ class SignUpViewController: UIViewController {
         if idTextView.isvalid() && firstPWTextView.isvalid()
             && secondPWTextView.isvalid() && nameTextView.isvalid(){
             saveUserInfo()
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let itemList = storyboard.instantiateViewController(withIdentifier: "ItemListViewController")
-            self.present(itemList, animated: true)
-        }
 
+        }
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let itemList = storyboard.instantiateViewController(withIdentifier: "ItemListViewController")
+        itemList.transitioningDelegate = self
+
+        self.present(itemList, animated: true)
     }
 }

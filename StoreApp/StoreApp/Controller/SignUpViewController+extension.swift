@@ -19,3 +19,9 @@ extension SignUpViewController: VerifyTextViewDelegate {
         return .notEqualPassward
     }
 }
+
+extension SignUpViewController: UIViewControllerTransitioningDelegate {
+    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return SlideInAnimator()
+    }
+}
