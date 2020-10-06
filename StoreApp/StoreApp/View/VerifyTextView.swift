@@ -53,7 +53,6 @@ class VerifyTextView: UIView {
         addSubview(textField)
         
         title.text = "title"
-        
         title.font = UIFont.systemFont(ofSize: 14, weight: .bold)
         title.textColor = .systemGray
         title.translatesAutoresizingMaskIntoConstraints = false

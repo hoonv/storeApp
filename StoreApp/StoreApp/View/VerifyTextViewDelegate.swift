@@ -39,7 +39,6 @@ class PWDelegate: VerifyTextViewDelegate {
     }
 }
 
-
 class NameDelegate: VerifyTextViewDelegate {
     
     var pass: ValidatorMessage {

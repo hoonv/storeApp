@@ -17,12 +17,10 @@ class SecureVerifyTextView: VerifyTextView {
         rightButton.setImage(UIImage(named: "icon-eye") , for: .normal)
         rightButton.addTarget(self, action: #selector(toggleShowHide), for: .touchUpInside)
         rightButton.frame = CGRect(x:10, y:6, width:26, height:24)
-
         container.addSubview(rightButton)
         textField.rightViewMode = .always
         textField.rightView = container
         textField.isSecureTextEntry = true
-        
         super.commonInit()
     }
 
