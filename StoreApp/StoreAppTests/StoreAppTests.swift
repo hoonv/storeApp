@@ -11,7 +11,9 @@ import XCTest
 class StoreAppTests: XCTestCase {
 
     
-    let validator = Validator()
+    let idValidator = IdValidator()
+    let pwValidator = PwValidator()
+    let nameValidator = NameValidator()
 
     override func setUpWithError() throws {
     }
@@ -20,78 +22,78 @@ class StoreAppTests: XCTestCase {
     }
 
     func test_id_verify_success() throws {
-        XCTAssertEqual(ValidatorMessage.validId, validator.id(input: "chaehk95"))
+        XCTAssertEqual(ValidatorMessage.validId, idValidator.validate(input: "chaehk95"))
     }
 
     func test_id_verify_fail_less_length() throws {
-        XCTAssertEqual(ValidatorMessage.invalidlengthID, validator.id(input: "chae"))
+        XCTAssertEqual(ValidatorMessage.invalidlengthID, idValidator.validate(input: "chae"))
     }
     
     func test_id_verify_fail_Include_special_character() throws {
-        XCTAssertEqual(ValidatorMessage.invalidSpecialCharactor, validator.id(input: "chaeee&^%$"))
+        XCTAssertEqual(ValidatorMessage.invalidSpecialCharactor, idValidator.validate(input: "chaeee&^%$"))
     }
 
     func test_id_verify_success_Include_underbar() throws {
-        XCTAssertEqual(ValidatorMessage.validId, validator.id(input: "chaeee_"))
+        XCTAssertEqual(ValidatorMessage.validId, idValidator.validate(input: "chaeee_"))
     }
     
     func test_id_verify_success_Include_dash() throws {
-        XCTAssertEqual(ValidatorMessage.validId, validator.id(input: "chaeee-"))
+        XCTAssertEqual(ValidatorMessage.validId, idValidator.validate(input: "chaeee-"))
     }
     
     func test_id_verify_success_Include_number() throws {
-        XCTAssertEqual(ValidatorMessage.validId, validator.id(input: "chaeee932123"))
+        XCTAssertEqual(ValidatorMessage.validId, idValidator.validate(input: "chaeee932123"))
     }
     
     func test_password_verify_success_length() throws {
-        XCTAssertEqual(ValidatorMessage.validPassword, validator.password(input: "adfSD2000!"))
+        XCTAssertEqual(ValidatorMessage.validPassword, pwValidator.validate(input: "adfSD2000!"))
     }
     
     func test_password_verify_fail_notInclude_number() throws {
-        XCTAssertEqual(ValidatorMessage.invalidNotIncludeNumber, validator.password(input: "adfSDfdsd!"))
+        XCTAssertEqual(ValidatorMessage.invalidNotIncludeNumber, pwValidator.validate(input: "adfSDfdsd!"))
     }
     
     func test_password_verify_fail_notInclude_small() throws {
-        XCTAssertEqual(ValidatorMessage.invalidNotIncludeSmall, validator.password(input: "ADSFAS12!"))
+        XCTAssertEqual(ValidatorMessage.invalidNotIncludeSmall, pwValidator.validate(input: "ADSFAS12!"))
     }
     
     func test_password_verify_fail_notInclude_large() throws {
-        XCTAssertEqual(ValidatorMessage.invalidNotIncludeLarge, validator.password(input: "asdffes12!"))
+        XCTAssertEqual(ValidatorMessage.invalidNotIncludeLarge, pwValidator.validate(input: "asdffes12!"))
     }
     
     func test_password_verify_fail_notInclude_special() throws {
-        XCTAssertEqual(ValidatorMessage.invalidNotIncludeSpecial, validator.password(input: "asdffesFD12"))
+        XCTAssertEqual(ValidatorMessage.invalidNotIncludeSpecial, pwValidator.validate(input: "asdffesFD12"))
     }
     
     func test_password_verify_fail_notInclude_space() throws {
-        XCTAssertEqual(ValidatorMessage.invalidIncludeSpace, validator.password(input: "asdf fesFD12"))
+        XCTAssertEqual(ValidatorMessage.invalidIncludeSpace, pwValidator.validate(input: "asdf fesFD12"))
     }
     
     func test_password_verify_fail_notInclude_space1() throws {
-        XCTAssertEqual(ValidatorMessage.invalidIncludeSpace, validator.password(input: "asdffesFD12 "))
+        XCTAssertEqual(ValidatorMessage.invalidIncludeSpace, pwValidator.validate(input: "asdffesFD12 "))
     }
     func test_password_verify_fail_notInclude_space2() throws {
-        XCTAssertEqual(ValidatorMessage.invalidIncludeSpace, validator.password(input: " asdffesFD12"))
+        XCTAssertEqual(ValidatorMessage.invalidIncludeSpace, pwValidator.validate(input: " asdffesFD12"))
     }
     
     func test_id_verify_fail_empty() throws {
-        XCTAssertEqual(ValidatorMessage.emptyId, validator.id(input: ""))
+        XCTAssertEqual(ValidatorMessage.emptyId, idValidator.validate(input: ""))
     }
     
     func test_password_verify_fail_empty() throws {
-        XCTAssertEqual(ValidatorMessage.emptyPassword, validator.password(input: ""))
+        XCTAssertEqual(ValidatorMessage.emptyPassword, pwValidator.validate(input: ""))
     }
     
     func test_name_verify_fail_empty() throws {
-        XCTAssertEqual(ValidatorMessage.emptyName, validator.name(input: ""))
+        XCTAssertEqual(ValidatorMessage.emptyName, nameValidator.validate(input: ""))
     }
     
     func test_name_verify_fail_special() throws {
-        XCTAssertEqual(ValidatorMessage.invaildNameSpecial, validator.name(input: "훈기^"))
+        XCTAssertEqual(ValidatorMessage.invaildNameSpecial, nameValidator.validate(input: "훈기^"))
     }
     
     func test_name_verify_fail_number() throws {
-        XCTAssertEqual(ValidatorMessage.invaildNameNumber, validator.name(input: "훈기6"))
+        XCTAssertEqual(ValidatorMessage.invaildNameNumber, nameValidator.validate(input: "훈기6"))
     }
 }
 

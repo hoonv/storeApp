@@ -7,6 +7,12 @@
 
 import Foundation
 
+protocol Validator {
+    
+    var pass: ValidatorMessage { get }
+    
+    func validate(input: String) -> ValidatorMessage
+}
 
 enum ValidatorMessage: String {
     
@@ -30,69 +36,89 @@ enum ValidatorMessage: String {
     case validName = "올바른 이름 입니다."
 }
 
-class Validator {
+class IdValidator: Validator {
     
-    func id(input: String) -> ValidatorMessage {
+    var pass: ValidatorMessage {
+        get { .validId }
+    }
+    
+    func validate(input: String) -> ValidatorMessage {
         if input.isEmpty {
             return .emptyId
         }
-        
+
         if input.getArray(regex: "^(?=.*).{5,20}$").isEmpty {
             return .invalidlengthID
         }
-        
+
         if input.getArray(regex: "^[0-9a-z_-]+$").isEmpty {
             return .invalidSpecialCharactor
         }
-    
+
         return .validId
     }
+}
+
+
+class PwValidator: Validator {
     
-    func password(input: String) -> ValidatorMessage {
+    var pass: ValidatorMessage {
+        get { .validPassword }
+    }
+    
+    func validate(input: String) -> ValidatorMessage {
         if input.isEmpty {
             return .emptyPassword
         }
-        
+
         if input.getArray(regex: "^(?=.*).{8,16}$").isEmpty {
             return .invalidlengthPassword
         }
-        
+
         if input.getArray(regex: "(?=.*[0-9]).+").isEmpty {
             return .invalidNotIncludeNumber
         }
-        
+
         if input.getArray(regex: "(?=.*[a-z]).+").isEmpty {
             return .invalidNotIncludeSmall
         }
-        
+
         if input.getArray(regex: "(?=.*[A-Z]).+").isEmpty {
             return .invalidNotIncludeLarge
         }
-        
+
         if input.getArray(regex: "(?=.*\\W).+").isEmpty {
             return .invalidNotIncludeSpecial
         }
-        
+
         if !input.getArray(regex: "(?=\\s).+").isEmpty {
             return .invalidIncludeSpace
         }
 
         return .validPassword
     }
+}
+
+
+class NameValidator: Validator {
     
-    func name(input: String) -> ValidatorMessage {
+    var pass: ValidatorMessage {
+        get { .validName }
+    }
+    
+    func validate(input: String) -> ValidatorMessage {
         if input.isEmpty {
             return .emptyName
         }
-        
+
         if !input.getArray(regex: "(?=.*[0-9]).+").isEmpty {
             return .invaildNameNumber
         }
-    
+
         if !input.getArray(regex: "(?=.*\\W).+").isEmpty {
             return .invaildNameSpecial
         }
-        
+
         return .validName
     }
 }
