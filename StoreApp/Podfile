@@ -1,0 +1,7 @@
+# Podfile
+use_frameworks!
+
+target 'StoreApp' do
+    pod 'RxSwift'
+    pod 'RxCocoa'
+end
