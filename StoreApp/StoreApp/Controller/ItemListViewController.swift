@@ -10,7 +10,8 @@ import UIKit
 class ItemListViewController: UIViewController {
 
     @IBOutlet weak var itemCollectionView: UICollectionView!
-    let reuseIdentifier = "ItemCollectionViewCell"
+    let cellReuseIdentifier = "ItemCollectionViewCell"
+    let headerReuseIdentifier = "CollectionHeaderView"
     var items: [[StoreItem]] = []
     
     override func viewDidLoad() {
@@ -18,11 +19,10 @@ class ItemListViewController: UIViewController {
         items.append(StoreItemLoader.load(name: "main") ?? [])
         items.append(StoreItemLoader.load(name: "side") ?? [])
         items.append(StoreItemLoader.load(name: "soup") ?? [])
-        itemCollectionView.register(UINib(nibName: "ItemCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: reuseIdentifier)
-        itemCollectionView.register(UINib(nibName: "CollectionHeaderView",bundle: nil), forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "CollectionHeaderView")
+        itemCollectionView.register(UINib(nibName: "ItemCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: cellReuseIdentifier)
+        itemCollectionView.register(UINib(nibName: "CollectionHeaderView",bundle: nil), forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: headerReuseIdentifier)
         itemCollectionView.delegate = self
         itemCollectionView.dataSource = self
-
     }
 }
 
@@ -61,7 +61,8 @@ extension ItemListViewController: UICollectionViewDelegate, UICollectionViewData
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         if kind.isEqual(UICollectionView.elementKindSectionHeader) {
-            let cell = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "CollectionHeaderView", for: indexPath) as! CollectionHeaderView
+            guard let cell = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerReuseIdentifier, for: indexPath) as? CollectionHeaderView
+            else { return UICollectionReusableView() }
             cell.backgroundColor = .systemGray2
             return cell
         } else {
@@ -70,7 +71,7 @@ extension ItemListViewController: UICollectionViewDelegate, UICollectionViewData
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath as IndexPath) as! ItemCollectionViewCell
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellReuseIdentifier, for: indexPath as IndexPath) as? ItemCollectionViewCell else { return UICollectionViewCell() }
         let item = items[indexPath.section][indexPath.item]
         let url = URL(string: item.image)
         DispatchQueue.main.async {

@@ -12,7 +12,6 @@ class VerifyTextView: UIView {
     public var dataSource: VerifyTextViewDataSource? {
         didSet { setupUI() }
     }
-    public var delegate: VerifyTextViewDelegate?
     private let title = UILabel()
     public let textField = UITextField()
     private let message = UILabel()
@@ -23,6 +22,7 @@ class VerifyTextView: UIView {
     private let successBorder = UIColor(named: "TextFieldPassBorderColor")
     private let successColor = UIColor(named: "TextFieldPassColor")
     private let failBorder = UIColor.systemRed
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         commonInit()
@@ -35,7 +35,6 @@ class VerifyTextView: UIView {
     
     func commonInit() {
         self.backgroundColor = .clear
-        
         let iconContainerView: UIView = UIView(frame: CGRect(x: 20, y: 0, width: 40, height: 30))
         iconView.image = UIImage(named: "icon-tag")
         iconView.contentMode = .scaleAspectFit
@@ -78,42 +77,30 @@ class VerifyTextView: UIView {
             message.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 0),
         ])
     }
-
-    private func verify(input: String) {
-        guard let msg = delegate?.verify(input: input) else { return }
+    
+    public func updateUIPass(msg: ValidatorMessage) {
+        textField.backgroundColor = successColor
+        textField.layer.borderColor = successBorder?.cgColor
+        iconView.image = dataSource?.passIcon() ?? UIImage(named: "icon-tag-cyan")
+        title.textColor = successBorder
+        message.textColor = successBorder
+        message.text = msg.rawValue
         
-        if msg == delegate?.pass {
-            textField.backgroundColor = successColor
-            textField.layer.borderColor = successBorder?.cgColor
-            iconView.image = dataSource?.passIcon() ?? UIImage(named: "icon-tag-cyan")
-            title.textColor = successBorder
-            message.textColor = successBorder
-            message.text = msg.rawValue
-        } else {
-            textField.backgroundColor = failColor
-            textField.layer.borderColor = failBorder.cgColor
-            iconView.image = dataSource?.failIcon() ?? UIImage(named: "icon-tag-red")
-            title.textColor = failBorder
-            message.textColor = failBorder
-            message.text = msg.rawValue
-        }
     }
     
-    public func isvalid() -> Bool {
-        let text = textField.text ?? ""
-        guard let msg = delegate?.verify(input: text ) else { return false }
-        
-        if msg == delegate?.pass {
-            return true
-        }
-        verify(input: text)
-        return false
+    public func updateUIFail(msg: ValidatorMessage) {
+        textField.backgroundColor = failColor
+        textField.layer.borderColor = failBorder.cgColor
+        iconView.image = dataSource?.failIcon() ?? UIImage(named: "icon-tag-red")
+        title.textColor = failBorder
+        message.textColor = failBorder
+        message.text = msg.rawValue
     }
     
     private func setupUI() {
         iconView.image = dataSource?.defaultIcon() ?? UIImage(named: "icon-tag")
         textField.placeholder = dataSource?.placeholder() ?? ""
-        title.text = dataSource?.title() ?? "title"
+        self.title.text = dataSource?.title() ?? "title"
     }
 }
 
@@ -122,10 +109,9 @@ extension VerifyTextView: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
         NotificationCenter.default.post(name: .UIKeyboardWillShow, object: nil)
     }
-
+    
     func textFieldDidEndEditing(_ textField: UITextField) {
-        NotificationCenter.default.post(name: .UIKeyboardWillHide, object: nil)
-        verify(input: textField.text ?? "")
+         NotificationCenter.default.post(name: .UIKeyboardWillHide, object: nil)
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

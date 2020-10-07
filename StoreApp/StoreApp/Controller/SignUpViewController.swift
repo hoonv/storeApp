@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 class SignUpViewController: UIViewController {
 
@@ -15,11 +17,18 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var nameTextView: VerifyTextView!
     @IBOutlet weak var nextButton: UIButton!
     
+    let idViewModel = VerifyTextViewModel(validator: IdValidator())
+    let firstPWViewModel = VerifyTextViewModel(validator: PwValidator())
+    let nameViewModel = VerifyTextViewModel(validator: NameValidator())
+    let disposeBag = DisposeBag()
+    var isPWEqual = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor(named: "BackgroundColor")
-        setupTextField()
         nextButton.layer.cornerRadius = 5
+        setupTextFieldDataSource()
+        bindRx()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -34,15 +43,58 @@ class SignUpViewController: UIViewController {
         NotificationCenter.default.removeObserver(self)
     }
     
-    private func setupTextField() {
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
+    private func setupTextFieldDataSource() {
         idTextView.dataSource = IdDataSource()
-        idTextView.delegate = IdDelegate()
-        firstPWTextView.dataSource = PWDataSource()
-        firstPWTextView.delegate = PWDelegate()
-        secondPWTextView.dataSource = PW1DataSource()
-        secondPWTextView.delegate = self
-        nameTextView.delegate = NameDelegate()
+        firstPWTextView.dataSource = FirstPWDataSource()
+        secondPWTextView.dataSource = SecondPWDataSource()
         nameTextView.dataSource = NameDataSource()
+    }
+    
+    private func bindRx() {
+        bindVerifyTextView(view: idTextView, viewModel: idViewModel)
+        bindVerifyTextView(view: firstPWTextView, viewModel: firstPWViewModel)
+        bindVerifyTextView(view: nameTextView, viewModel: nameViewModel)
+        bindSecondPassword()
+    }
+    
+    private func bindSecondPassword() {
+        let first = firstPWTextView.textField.rx.text.orEmpty
+        let second = secondPWTextView.textField.rx.text.orEmpty
+        
+        Observable.combineLatest(first, second)
+            .subscribe(onNext: { [weak self] in
+            if $1.count == 0 {
+                return
+            }
+            if $0 == $1 {
+                self?.secondPWTextView.updateUIPass(msg: .equalPassword)
+            }else {
+                self?.secondPWTextView.updateUIFail(msg: .notEqualPassward)
+            }
+        }).disposed(by: disposeBag)
+    }
+    
+    private func bindVerifyTextView(view verifyView: VerifyTextView,
+                            viewModel verifyViewModel: VerifyTextViewModel) {
+        
+        verifyView.textField.rx.text.orEmpty
+            .bind(to: verifyViewModel.textFieldValueChanged)
+            .disposed(by: disposeBag)
+
+        verifyViewModel.inputDidValidate.subscribe(onNext: { [weak self] msg in
+            self?.isPWEqual = msg == verifyViewModel.pass
+            
+            if msg == verifyViewModel.pass {
+                verifyView.updateUIPass(msg: msg)
+            } else {
+                verifyView.updateUIFail(msg: msg)
+            }
+        })
+        .disposed(by: disposeBag)
     }
     
     private func saveUserInfo() {
@@ -62,22 +114,22 @@ class SignUpViewController: UIViewController {
     @objc func keyboardWillHide(_ sender: Notification) {
         self.view.frame.origin.y = 0
     }
-
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.view.endEditing(true)
-    }
     
     @IBAction func nextOnTouch(_ sender: Any) {
-        if idTextView.isvalid() && firstPWTextView.isvalid()
-            && secondPWTextView.isvalid() && nameTextView.isvalid(){
+        if idViewModel.status && firstPWViewModel.status
+            && isPWEqual && nameViewModel.status {
             saveUserInfo()
-
         }
-        
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let itemList = storyboard.instantiateViewController(withIdentifier: "ItemListViewController")
         itemList.transitioningDelegate = self
 
         self.present(itemList, animated: true)
+    }
+}
+
+extension SignUpViewController: UIViewControllerTransitioningDelegate {
+    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return SlideInAnimator()
     }
 }
