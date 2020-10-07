@@ -9,11 +9,11 @@ import UIKit
 
 class CollectionHeaderView: UICollectionReusableView {
 
+    @IBOutlet weak var category: UILabel!
     @IBOutlet weak var title: UILabel!
-    @IBOutlet weak var desc: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
     
 }
