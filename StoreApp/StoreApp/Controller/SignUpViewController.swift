@@ -65,38 +65,41 @@ class SignUpViewController: UIViewController {
     private func bindSecondPassword() {
         let first = firstPWTextView.textField.rx.text.orEmpty
         let second = secondPWTextView.textField.rx.text.orEmpty
-        
+     
         Observable.combineLatest(first, second)
+            .debounce(.milliseconds(1500), scheduler: MainScheduler.instance )
+            .filter{ $0.0.count != 0 && $0.1.count != 0 }
+            .map { $0.0 == $0.1 }
             .subscribe(onNext: { [weak self] in
-            if $1.count == 0 {
-                return
-            }
-            if $0 == $1 {
-                self?.secondPWTextView.updateUIPass(msg: .equalPassword)
-            }else {
-                self?.secondPWTextView.updateUIFail(msg: .notEqualPassward)
-            }
-        }).disposed(by: disposeBag)
+                if $0 {
+                    self?.secondPWTextView.updateUIPass(msg: .equalPassword)
+                } else {
+                    self?.secondPWTextView.updateUIFail(msg: .notEqualPassward)
+                }
+            }).disposed(by: disposeBag)
     }
     
     private func bindVerifyTextView(view verifyView: VerifyTextView,
                             viewModel verifyViewModel: VerifyTextViewModel) {
         // input
         verifyView.textField.rx.text.orEmpty
+            .filter{ $0.count != 0 }
+            .debounce(.milliseconds(1500), scheduler: MainScheduler.instance )
             .bind(to: verifyViewModel.textFieldValueChanged)
             .disposed(by: disposeBag)
-
+        
         // output
-        verifyViewModel.inputDidValidate.subscribe(onNext: { [weak self] msg in
-            self?.isPWEqual = msg == verifyViewModel.pass
-            
-            if msg == verifyViewModel.pass {
-                verifyView.updateUIPass(msg: msg)
-            } else {
-                verifyView.updateUIFail(msg: msg)
-            }
-        })
-        .disposed(by: disposeBag)
+        verifyViewModel.inputDidValidate
+            .subscribe(onNext: { [weak self] msg in
+                self?.isPWEqual = msg == verifyViewModel.pass
+                
+                if msg == verifyViewModel.pass {
+                    verifyView.updateUIPass(msg: msg)
+                } else {
+                    verifyView.updateUIFail(msg: msg)
+                }
+            })
+            .disposed(by: disposeBag)
     }
     
     private func saveUserInfo() {
@@ -121,12 +124,12 @@ class SignUpViewController: UIViewController {
         if idViewModel.status && firstPWViewModel.status
             && isPWEqual && nameViewModel.status {
             saveUserInfo()
-        }
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let itemList = storyboard.instantiateViewController(withIdentifier: "ItemListViewController")
-        itemList.transitioningDelegate = self
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let itemList = storyboard.instantiateViewController(withIdentifier: "ItemListViewController")
+            itemList.transitioningDelegate = self
 
-        self.present(itemList, animated: true)
+            self.present(itemList, animated: true)
+        }
     }
 }
 

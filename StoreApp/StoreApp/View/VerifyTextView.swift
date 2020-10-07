@@ -107,15 +107,15 @@ class VerifyTextView: UIView {
 
 extension VerifyTextView: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        NotificationCenter.default.post(name: .UIKeyboardWillShow, object: nil)
+//        NotificationCenter.default.post(name: .UIKeyboardWillShow, object: nil)
     }
-    
+
     func textFieldDidEndEditing(_ textField: UITextField) {
-         NotificationCenter.default.post(name: .UIKeyboardWillHide, object: nil)
+//         NotificationCenter.default.post(name: .UIKeyboardWillHide, object: nil)
     }
-    
+
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        NotificationCenter.default.post(name: .UIKeyboardWillHide, object: nil)
+//        NotificationCenter.default.post(name: .UIKeyboardWillHide, object: nil)
         textField.resignFirstResponder()
         return true
     }
