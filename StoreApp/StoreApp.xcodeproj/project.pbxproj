@@ -35,6 +35,10 @@
 		E0D0EBB9252D89BC00116CFF /* main.json in Resources */ = {isa = PBXBuildFile; fileRef = E0D0EBB6252D89BB00116CFF /* main.json */; };
 		E0D0EBBA252D89BC00116CFF /* side.json in Resources */ = {isa = PBXBuildFile; fileRef = E0D0EBB7252D89BB00116CFF /* side.json */; };
 		E0D0EBBB252D89BC00116CFF /* soup.json in Resources */ = {isa = PBXBuildFile; fileRef = E0D0EBB8252D89BB00116CFF /* soup.json */; };
+		E0D0EBC4252D8CC500116CFF /* StoreItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D0EBC3252D8CC500116CFF /* StoreItemViewModel.swift */; };
+		E0D0EBC9252D8E9800116CFF /* StoreItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D0EBC8252D8E9800116CFF /* StoreItems.swift */; };
+		E0D0EBD1252DAE1B00116CFF /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D0EBD0252DAE1B00116CFF /* StringExtension.swift */; };
+		E0D0EBD6252DB85600116CFF /* BadgeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D0EBD5252DB85600116CFF /* BadgeLabel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -92,6 +96,10 @@
 		E0D0EBB6252D89BB00116CFF /* main.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = main.json; sourceTree = "<group>"; };
 		E0D0EBB7252D89BB00116CFF /* side.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = side.json; sourceTree = "<group>"; };
 		E0D0EBB8252D89BB00116CFF /* soup.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = soup.json; sourceTree = "<group>"; };
+		E0D0EBC3252D8CC500116CFF /* StoreItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreItemViewModel.swift; sourceTree = "<group>"; };
+		E0D0EBC8252D8E9800116CFF /* StoreItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreItems.swift; sourceTree = "<group>"; };
+		E0D0EBD0252DAE1B00116CFF /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
+		E0D0EBD5252DB85600116CFF /* BadgeLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeLabel.swift; sourceTree = "<group>"; };
 		E4D19E9982F21F644595CB70 /* Pods_StoreApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StoreApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -145,6 +153,7 @@
 			children = (
 				E0172CB2252B0F3500A91671 /* Notification.swift */,
 				E0172CC7252C284F00A91671 /* SlideInAnimator.swift */,
+				E0D0EBD0252DAE1B00116CFF /* StringExtension.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -215,6 +224,7 @@
 				E0C6D86E252979EA00A834E2 /* Validator.swift */,
 				E0172CB7252B16EB00A91671 /* User.swift */,
 				E0172CD5252C4B6200A91671 /* StoreItem.swift */,
+				E0D0EBC8252D8E9800116CFF /* StoreItems.swift */,
 				E0172CE4252C52B700A91671 /* StoreItemLoader.swift */,
 			);
 			path = Model;
@@ -239,6 +249,7 @@
 				E0172D00252C80A400A91671 /* ItemCollectionViewCell.xib */,
 				E0172D06252C96EF00A91671 /* CollectionHeaderView.swift */,
 				E0172D07252C96EF00A91671 /* CollectionHeaderView.xib */,
+				E0D0EBD5252DB85600116CFF /* BadgeLabel.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -247,6 +258,7 @@
 			isa = PBXGroup;
 			children = (
 				E07DA5D2252D676F00F3497B /* VerifyTextViewModel.swift */,
+				E0D0EBC3252D8CC500116CFF /* StoreItemViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -457,12 +469,16 @@
 				E0172D01252C80A400A91671 /* ItemCollectionViewCell.swift in Sources */,
 				E0172CA2252B0E7100A91671 /* VerifyTextViewDataSource.swift in Sources */,
 				E0172D08252C96EF00A91671 /* CollectionHeaderView.swift in Sources */,
+				E0D0EBC4252D8CC500116CFF /* StoreItemViewModel.swift in Sources */,
 				E0172CBD252B25A200A91671 /* ItemListViewController.swift in Sources */,
 				E0172CB8252B16EB00A91671 /* User.swift in Sources */,
+				E0D0EBD1252DAE1B00116CFF /* StringExtension.swift in Sources */,
+				E0D0EBC9252D8E9800116CFF /* StoreItems.swift in Sources */,
 				E0172CB3252B0F3500A91671 /* Notification.swift in Sources */,
 				E04AFA142521918A009E9F9A /* SceneDelegate.swift in Sources */,
 				E0172CE5252C52B700A91671 /* StoreItemLoader.swift in Sources */,
 				E0172CD6252C4B6200A91671 /* StoreItem.swift in Sources */,
+				E0D0EBD6252DB85600116CFF /* BadgeLabel.swift in Sources */,
 				E07DA5D3252D676F00F3497B /* VerifyTextViewModel.swift in Sources */,
 				E0172CC8252C284F00A91671 /* SlideInAnimator.swift in Sources */,
 			);

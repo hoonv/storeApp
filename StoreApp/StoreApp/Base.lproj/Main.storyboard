@@ -17,35 +17,35 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ejp-P1-Ben" customClass="VerifyTextView" customModule="StoreApp" customModuleProvider="target">
-                                <rect key="frame" x="30" y="142.33333333333334" width="354" height="100"/>
+                                <rect key="frame" x="30" y="132.33333333333334" width="354" height="100"/>
                                 <color key="backgroundColor" systemColor="systemFillColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="5aI-lh-6Qc"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ryM-0h-FLJ" customClass="SecureVerifyTextView" customModule="StoreApp" customModuleProvider="target">
-                                <rect key="frame" x="30" y="252.33333333333337" width="354" height="100"/>
+                                <rect key="frame" x="30" y="242.33333333333337" width="354" height="100"/>
                                 <color key="backgroundColor" systemColor="systemFillColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="MbZ-5i-ivM"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VWP-7t-3yW" customClass="SecureVerifyTextView" customModule="StoreApp" customModuleProvider="target">
-                                <rect key="frame" x="30" y="362.33333333333331" width="354" height="100"/>
+                                <rect key="frame" x="30" y="352.33333333333331" width="354" height="100"/>
                                 <color key="backgroundColor" systemColor="systemFillColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="mF3-hQ-hjR"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X2x-w6-0v9" customClass="VerifyTextView" customModule="StoreApp" customModuleProvider="target">
-                                <rect key="frame" x="30" y="472.33333333333326" width="354" height="100"/>
+                                <rect key="frame" x="30" y="462.33333333333326" width="354" height="100"/>
                                 <color key="backgroundColor" systemColor="systemFillColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="NpM-3E-1qv"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="회원가입" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dhw-tM-83I">
-                                <rect key="frame" x="25" y="70" width="101" height="32.333333333333343"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="회원가입" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dhw-tM-83I">
+                                <rect key="frame" x="25" y="70" width="139" height="32.333333333333343"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="27"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -70,13 +70,13 @@
                         <constraints>
                             <constraint firstItem="X2x-w6-0v9" firstAttribute="top" secondItem="VWP-7t-3yW" secondAttribute="bottom" constant="9.9999999999999432" id="0Pq-RE-gl9"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ryM-0h-FLJ" secondAttribute="trailing" constant="30" id="10z-wh-jOM"/>
-                            <constraint firstItem="ejp-P1-Ben" firstAttribute="top" secondItem="Dhw-tM-83I" secondAttribute="bottom" constant="40" id="99M-ea-QiD"/>
+                            <constraint firstItem="ejp-P1-Ben" firstAttribute="top" secondItem="Dhw-tM-83I" secondAttribute="bottom" constant="30" id="99M-ea-QiD"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="X2x-w6-0v9" secondAttribute="trailing" constant="30" id="Cir-Mx-RDT"/>
                             <constraint firstItem="X2x-w6-0v9" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="KZc-go-VoS"/>
                             <constraint firstItem="ryM-0h-FLJ" firstAttribute="top" secondItem="ejp-P1-Ben" secondAttribute="bottom" constant="9.9999999999999716" id="MG5-5r-GLF"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="wKt-eG-hmb" secondAttribute="bottom" constant="30" id="Oy8-1O-Npt"/>
                             <constraint firstItem="Dhw-tM-83I" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="25" id="P0N-D4-OYU"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Dhw-tM-83I" secondAttribute="trailing" constant="288" id="bFg-6h-LIp"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Dhw-tM-83I" secondAttribute="trailing" constant="250" id="bFg-6h-LIp"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="VWP-7t-3yW" secondAttribute="trailing" constant="30" id="isD-n2-Jhj"/>
                             <constraint firstItem="ejp-P1-Ben" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="kzb-Ce-Q7E"/>
                             <constraint firstItem="wKt-eG-hmb" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="lnZ-Mm-89y"/>
