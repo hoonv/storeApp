@@ -30,6 +30,7 @@ class StoreItems {
         return index < items.count || index >= 0
         
     }
+    
     subscript(index: Int) -> StoreItem {
         assert(indexIsValid(index: index), "Index out of range")
         return items[index]

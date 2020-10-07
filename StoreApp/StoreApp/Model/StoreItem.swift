@@ -8,6 +8,7 @@
 import Foundation
 
 struct StoreItem: Codable {
+    
     let detailHash: String
     let image: String
     let alt: String

@@ -101,6 +101,7 @@ extension ItemListViewController: UICollectionViewDelegate, UICollectionViewData
             cell.nPrice.text = ""
         }
         
+        //setup image
         DispatchQueue.global().async {
             do {
                 guard let url = URL(string: item.image) else { return }
@@ -113,6 +114,7 @@ extension ItemListViewController: UICollectionViewDelegate, UICollectionViewData
             }
         }
         
+        //setup badge
         item.badge?.forEach {
             let label = BadgeLabel(frame: CGRect.zero)
             let idx = itemViewModel.badges.firstIndex(of: $0) ?? 0 % badgeColors.count

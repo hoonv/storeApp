@@ -27,7 +27,6 @@ class StoreItemViewModel {
         headers.append(Header(title: "한그릇 뚝딱 메인 요리", category: "메인반찬"))
         headers.append(Header(title: "언제 먹어도 든든한 밑반찬", category: "밑반찬"))
         headers.append(Header(title: "김이 모락모락 국・찌개", category: "국・찌개"))
-
     }
     
 }
