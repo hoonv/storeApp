@@ -10,10 +10,10 @@ import RxSwift
 
 class VerifyTextViewModel {
     
-    let disposeBag = DisposeBag()
     var textFieldValueChanged = PublishSubject<String>()
     var inputDidValidate = PublishSubject<ValidatorMessage>()
-    
+    let disposeBag = DisposeBag()
+
     var validate: (String) -> ValidatorMessage
     var pass: ValidatorMessage
     var status: Bool

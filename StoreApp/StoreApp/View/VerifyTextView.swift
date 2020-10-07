@@ -81,7 +81,7 @@ class VerifyTextView: UIView {
     public func updateUIPass(msg: ValidatorMessage) {
         textField.backgroundColor = successColor
         textField.layer.borderColor = successBorder?.cgColor
-        iconView.image = dataSource?.passIcon() ?? UIImage(named: "icon-tag-cyan")
+        iconView.image = dataSource?.passIcon ?? UIImage(named: "icon-tag-cyan")
         title.textColor = successBorder
         message.textColor = successBorder
         message.text = msg.rawValue
@@ -91,16 +91,16 @@ class VerifyTextView: UIView {
     public func updateUIFail(msg: ValidatorMessage) {
         textField.backgroundColor = failColor
         textField.layer.borderColor = failBorder.cgColor
-        iconView.image = dataSource?.failIcon() ?? UIImage(named: "icon-tag-red")
+        iconView.image = dataSource?.failIcon ?? UIImage(named: "icon-tag-red")
         title.textColor = failBorder
         message.textColor = failBorder
         message.text = msg.rawValue
     }
     
     private func setupUI() {
-        iconView.image = dataSource?.defaultIcon() ?? UIImage(named: "icon-tag")
-        textField.placeholder = dataSource?.placeholder() ?? ""
-        self.title.text = dataSource?.title() ?? "title"
+        iconView.image = dataSource?.defaultIcon ?? UIImage(named: "icon-tag")
+        textField.placeholder = dataSource?.placeholder ?? ""
+        self.title.text = dataSource?.title ?? "title"
     }
 }
 

@@ -20,6 +20,7 @@ class SignUpViewController: UIViewController {
     let idViewModel = VerifyTextViewModel(validator: IdValidator())
     let firstPWViewModel = VerifyTextViewModel(validator: PwValidator())
     let nameViewModel = VerifyTextViewModel(validator: NameValidator())
+    let signUpViewModel = SignUpViewModel()
     let disposeBag = DisposeBag()
     var isPWEqual = false
     
@@ -80,11 +81,12 @@ class SignUpViewController: UIViewController {
     
     private func bindVerifyTextView(view verifyView: VerifyTextView,
                             viewModel verifyViewModel: VerifyTextViewModel) {
-        
+        // input
         verifyView.textField.rx.text.orEmpty
             .bind(to: verifyViewModel.textFieldValueChanged)
             .disposed(by: disposeBag)
 
+        // output
         verifyViewModel.inputDidValidate.subscribe(onNext: { [weak self] msg in
             self?.isPWEqual = msg == verifyViewModel.pass
             

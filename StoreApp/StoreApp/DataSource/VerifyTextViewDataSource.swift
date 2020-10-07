@@ -9,105 +9,105 @@ import UIKit
 
 protocol VerifyTextViewDataSource {
     
-    func defaultIcon() -> UIImage?
+    var defaultIcon: UIImage? { get }
     
-    func passIcon() -> UIImage?
+    var passIcon: UIImage? { get }
     
-    func failIcon() -> UIImage?
+    var failIcon: UIImage? { get }
     
-    func placeholder() -> String
+    var placeholder: String { get }
     
-    func title() -> String
+    var title: String { get }
 }
 
 class IdDataSource: VerifyTextViewDataSource {
     
-    func defaultIcon() -> UIImage? {
-        return UIImage(named: "icon-person")
+    var defaultIcon: UIImage? {
+        get { return UIImage(named: "icon-person") }
     }
     
-    func passIcon() -> UIImage? {
-        return UIImage(named: "icon-person-cyan")
+    var passIcon: UIImage? {
+        get { return UIImage(named: "icon-person-cyan") }
     }
     
-    func failIcon() -> UIImage? {
-        return UIImage(named: "icon-person-red")
+    var failIcon: UIImage? {
+        get { return UIImage(named: "icon-person-red") }
     }
     
-    func placeholder() -> String {
-        return "영문 소문자 숫자 특수기호(_,-), 5~20자"
+    var placeholder: String {
+        get { return "영문 소문자 숫자 특수기호(_,-), 5~20자" }
     }
     
-    func title() -> String {
-        return "아이디"
+    var title: String {
+        get { return "아이디" }
     }
 }
 
 class FirstPWDataSource: VerifyTextViewDataSource {
     
-    func defaultIcon() -> UIImage? {
-        return UIImage(named: "icon-lock")
+    var defaultIcon: UIImage? {
+        get { return UIImage(named: "icon-lock") }
     }
     
-    func passIcon() -> UIImage? {
-        return UIImage(named: "icon-lock-cyan")
+    var passIcon: UIImage? {
+        get { return UIImage(named: "icon-lock-cyan") }
     }
     
-    func failIcon() -> UIImage? {
-        return UIImage(named: "icon-lock-red")
+    var failIcon: UIImage? {
+        get { return UIImage(named: "icon-lock-red") }
     }
     
-    func placeholder() -> String {
-        return "영문 대소문자 숫자 특수기호, 8~16자"
+    var placeholder: String {
+        get { return "영문 대소문자 숫자 특수기호, 8~16자" }
     }
     
-    func title() -> String {
-        return "비밀번호"
+    var title: String {
+        get { return "비밀번호" }
     }
 }
 
 class SecondPWDataSource: VerifyTextViewDataSource {
     
-    func defaultIcon() -> UIImage? {
-        return UIImage(named: "icon-lock")
+    var defaultIcon: UIImage? {
+        get { return UIImage(named: "icon-lock") }
     }
     
-    func passIcon() -> UIImage? {
-        return UIImage(named: "icon-lock-cyan")
+    var passIcon: UIImage? {
+        get { return UIImage(named: "icon-lock-cyan") }
     }
     
-    func failIcon() -> UIImage? {
-        return UIImage(named: "icon-lock-red")
+    var failIcon: UIImage? {
+        get { return UIImage(named: "icon-lock-red") }
     }
     
-    func placeholder() -> String {
-        return ""
+    var placeholder: String {
+        get { return "" }
     }
     
-    func title() -> String {
-        return "비밀번호 재확인"
+    var title: String {
+        get { return "비밀번호 재확인" }
     }
 }
 
 class NameDataSource: VerifyTextViewDataSource {
     
-    func defaultIcon() -> UIImage? {
-        return UIImage(named: "icon-tag")
+    var defaultIcon: UIImage? {
+        get { return UIImage(named: "icon-tag") }
     }
     
-    func passIcon() -> UIImage? {
-        return UIImage(named: "icon-tag-cyan")
+    var passIcon: UIImage? {
+        get { return UIImage(named: "icon-tag-cyan") }
     }
     
-    func failIcon() -> UIImage? {
-        return UIImage(named: "icon-tag-red")
+    var failIcon: UIImage? {
+        get { return UIImage(named: "icon-tag-red") }
     }
     
-    func placeholder() -> String {
-        return ""
+    var placeholder: String {
+        get { return "" }
     }
     
-    func title() -> String {
-        return "이름"
+    var title: String {
+        get { return "이름" }
     }
 }
