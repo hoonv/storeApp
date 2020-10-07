@@ -6,3 +6,11 @@
 //
 
 import Foundation
+import RxSwift
+import RxCocoa
+
+class SignUpViewModel {
+    
+    var passwordsCombine = PublishSubject<(String, String)>()
+    
+}

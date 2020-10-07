@@ -39,6 +39,7 @@
 		E0D0EBC9252D8E9800116CFF /* StoreItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D0EBC8252D8E9800116CFF /* StoreItems.swift */; };
 		E0D0EBD1252DAE1B00116CFF /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D0EBD0252DAE1B00116CFF /* StringExtension.swift */; };
 		E0D0EBD6252DB85600116CFF /* BadgeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D0EBD5252DB85600116CFF /* BadgeLabel.swift */; };
+		E0D0EBDB252DE10400116CFF /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D0EBDA252DE10400116CFF /* SignUpViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -100,6 +101,7 @@
 		E0D0EBC8252D8E9800116CFF /* StoreItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreItems.swift; sourceTree = "<group>"; };
 		E0D0EBD0252DAE1B00116CFF /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		E0D0EBD5252DB85600116CFF /* BadgeLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeLabel.swift; sourceTree = "<group>"; };
+		E0D0EBDA252DE10400116CFF /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		E4D19E9982F21F644595CB70 /* Pods_StoreApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StoreApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -259,6 +261,7 @@
 			children = (
 				E07DA5D2252D676F00F3497B /* VerifyTextViewModel.swift */,
 				E0D0EBC3252D8CC500116CFF /* StoreItemViewModel.swift */,
+				E0D0EBDA252DE10400116CFF /* SignUpViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -480,6 +483,7 @@
 				E0172CD6252C4B6200A91671 /* StoreItem.swift in Sources */,
 				E0D0EBD6252DB85600116CFF /* BadgeLabel.swift in Sources */,
 				E07DA5D3252D676F00F3497B /* VerifyTextViewModel.swift in Sources */,
+				E0D0EBDB252DE10400116CFF /* SignUpViewModel.swift in Sources */,
 				E0172CC8252C284F00A91671 /* SlideInAnimator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

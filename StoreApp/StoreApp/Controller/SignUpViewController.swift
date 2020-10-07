@@ -65,9 +65,14 @@ class SignUpViewController: UIViewController {
     private func bindSecondPassword() {
         let first = firstPWTextView.textField.rx.text.orEmpty
         let second = secondPWTextView.textField.rx.text.orEmpty
-     
+        // input
         Observable.combineLatest(first, second)
-            .debounce(.milliseconds(1500), scheduler: MainScheduler.instance )
+            .debounce(.milliseconds(1500), scheduler: ConcurrentMainScheduler.instance )
+            .bind(to: signUpViewModel.passwordsCombine)
+            .disposed(by: disposeBag)
+        
+        // output
+        signUpViewModel.passwordsCombine
             .filter{ $0.0.count != 0 && $0.1.count != 0 }
             .map { $0.0 == $0.1 }
             .subscribe(onNext: { [weak self] in
@@ -76,7 +81,8 @@ class SignUpViewController: UIViewController {
                 } else {
                     self?.secondPWTextView.updateUIFail(msg: .notEqualPassward)
                 }
-            }).disposed(by: disposeBag)
+            })
+            .disposed(by: disposeBag)
     }
     
     private func bindVerifyTextView(view verifyView: VerifyTextView,
@@ -84,7 +90,7 @@ class SignUpViewController: UIViewController {
         // input
         verifyView.textField.rx.text.orEmpty
             .filter{ $0.count != 0 }
-            .debounce(.milliseconds(1500), scheduler: MainScheduler.instance )
+            .debounce(.milliseconds(1500), scheduler: ConcurrentMainScheduler.instance )
             .bind(to: verifyViewModel.textFieldValueChanged)
             .disposed(by: disposeBag)
         
@@ -92,7 +98,6 @@ class SignUpViewController: UIViewController {
         verifyViewModel.inputDidValidate
             .subscribe(onNext: { [weak self] msg in
                 self?.isPWEqual = msg == verifyViewModel.pass
-                
                 if msg == verifyViewModel.pass {
                     verifyView.updateUIPass(msg: msg)
                 } else {
@@ -127,7 +132,6 @@ class SignUpViewController: UIViewController {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let itemList = storyboard.instantiateViewController(withIdentifier: "ItemListViewController")
             itemList.transitioningDelegate = self
-
             self.present(itemList, animated: true)
         }
     }
