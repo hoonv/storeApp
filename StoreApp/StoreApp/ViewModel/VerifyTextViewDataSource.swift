@@ -43,7 +43,7 @@ class IdDataSource: VerifyTextViewDataSource {
     }
 }
 
-class PWDataSource: VerifyTextViewDataSource {
+class FirstPWDataSource: VerifyTextViewDataSource {
     
     func defaultIcon() -> UIImage? {
         return UIImage(named: "icon-lock")
@@ -66,7 +66,7 @@ class PWDataSource: VerifyTextViewDataSource {
     }
 }
 
-class PW1DataSource: VerifyTextViewDataSource {
+class SecondPWDataSource: VerifyTextViewDataSource {
     
     func defaultIcon() -> UIImage? {
         return UIImage(named: "icon-lock")
