@@ -12,5 +12,6 @@ import RxCocoa
 class SignUpViewModel {
     
     var passwordsCombine = PublishSubject<(String, String)>()
-    
+    var isPWEqual: Bool = false
+
 }

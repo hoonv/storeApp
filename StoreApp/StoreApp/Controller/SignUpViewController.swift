@@ -22,7 +22,6 @@ class SignUpViewController: UIViewController {
     let nameViewModel = VerifyTextViewModel(validator: NameValidator())
     let signUpViewModel = SignUpViewModel()
     let disposeBag = DisposeBag()
-    var isPWEqual = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -76,6 +75,7 @@ class SignUpViewController: UIViewController {
             .filter{ $0.0.count != 0 && $0.1.count != 0 }
             .map { $0.0 == $0.1 }
             .subscribe(onNext: { [weak self] in
+                self?.signUpViewModel.isPWEqual = $0
                 if $0 {
                     self?.secondPWTextView.updateUIPass(msg: .equalPassword)
                 } else {
@@ -96,8 +96,7 @@ class SignUpViewController: UIViewController {
         
         // output
         verifyViewModel.inputDidValidate
-            .subscribe(onNext: { [weak self] msg in
-                self?.isPWEqual = msg == verifyViewModel.pass
+            .subscribe(onNext: { msg in
                 if msg == verifyViewModel.pass {
                     verifyView.updateUIPass(msg: msg)
                 } else {
@@ -127,7 +126,7 @@ class SignUpViewController: UIViewController {
     
     @IBAction func nextOnTouch(_ sender: Any) {
         if idViewModel.status && firstPWViewModel.status
-            && isPWEqual && nameViewModel.status {
+            && signUpViewModel.isPWEqual && nameViewModel.status {
             saveUserInfo()
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let itemList = storyboard.instantiateViewController(withIdentifier: "ItemListViewController")
