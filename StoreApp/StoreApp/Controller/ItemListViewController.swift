@@ -68,6 +68,7 @@ extension ItemListViewController: UICollectionViewDelegate, UICollectionViewData
         if kind.isEqual(UICollectionView.elementKindSectionHeader) {
             guard let cell = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerReuseIdentifier, for: indexPath) as? CollectionHeaderView
             else { return UICollectionReusableView() }
+            
             cell.category.text = itemViewModel.headers[indexPath.section].category
             cell.title.text = itemViewModel.headers[indexPath.section].title
             cell.backgroundColor = .systemBackground
