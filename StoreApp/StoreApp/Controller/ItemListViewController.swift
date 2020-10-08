@@ -70,7 +70,7 @@ extension ItemListViewController: UICollectionViewDelegate, UICollectionViewData
             else { return UICollectionReusableView() }
             cell.category.text = itemViewModel.headers[indexPath.section].category
             cell.title.text = itemViewModel.headers[indexPath.section].title
-            cell.backgroundColor = .white
+            cell.backgroundColor = .systemBackground
             
             return cell
         } else {
