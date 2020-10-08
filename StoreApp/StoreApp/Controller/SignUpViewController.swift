@@ -25,8 +25,7 @@ class SignUpViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor(named: "BackgroundColor")
-        nextButton.layer.cornerRadius = 5
+        setupUI()
         setupTextFieldDataSource()
         bindRx()
     }
@@ -45,6 +44,11 @@ class SignUpViewController: UIViewController {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
+    }
+    
+    private func setupUI() {
+        view.backgroundColor = UIColor(named: "BackgroundColor")
+        nextButton.layer.cornerRadius = 5
     }
     
     private func setupTextFieldDataSource() {
