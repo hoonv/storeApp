@@ -10,7 +10,7 @@ import UIKit
 final class SlideInAnimator: NSObject, UIViewControllerAnimatedTransitioning {
     
     func transitionDuration(using ctx: UIViewControllerContextTransitioning?) -> TimeInterval {
-        return 0.5
+        return 0.3
     }
     
     func animateTransition(using ctx: UIViewControllerContextTransitioning) {
