@@ -12,7 +12,9 @@ class ItemListViewController: UIViewController {
     @IBOutlet weak var itemCollectionView: UICollectionView!
     private let cellReuseIdentifier = "ItemCollectionViewCell"
     private let headerReuseIdentifier = "CollectionHeaderView"
-    private let badgeColors = [#colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1), #colorLiteral(red: 0.1764705926, green: 0.4980392158, blue: 0.7568627596, alpha: 1), #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)]
+    private let badgeColors = [#colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1),
+                               #colorLiteral(red: 0.1764705926, green: 0.4980392158, blue: 0.7568627596, alpha: 1),
+                               #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)]
     private var itemViewModel = StoreItemViewModel()
     
     override func viewDidLoad() {
@@ -21,8 +23,11 @@ class ItemListViewController: UIViewController {
     }
     
     private func setupCollectionView() {
-        itemCollectionView.register(UINib(nibName: "ItemCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: cellReuseIdentifier)
-        itemCollectionView.register(UINib(nibName: "CollectionHeaderView",bundle: nil), forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: headerReuseIdentifier)
+        itemCollectionView.register(UINib(nibName: "ItemCollectionViewCell", bundle: nil),
+                                    forCellWithReuseIdentifier: cellReuseIdentifier)
+        itemCollectionView.register(UINib(nibName: "CollectionHeaderView",bundle: nil),
+                                    forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
+                                    withReuseIdentifier: headerReuseIdentifier)
         itemCollectionView.delegate = self
         itemCollectionView.dataSource = self
         let layout = itemCollectionView.collectionViewLayout as? UICollectionViewFlowLayout
@@ -37,7 +42,9 @@ extension ItemListViewController: UICollectionViewDelegateFlowLayout {
         return CGSize(width: collectionView.frame.width, height: 140)
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        referenceSizeForHeaderInSection section: Int) -> CGSize {
         return CGSize(width: collectionView.frame.width, height: 80)
     }
     
@@ -63,11 +70,13 @@ extension ItemListViewController: UICollectionViewDelegate, UICollectionViewData
         return itemViewModel.items[section].count
     }
     
-    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+    func collectionView(_ collectionView: UICollectionView,
+                        viewForSupplementaryElementOfKind kind: String,
+                        at indexPath: IndexPath) -> UICollectionReusableView {
         
         if kind.isEqual(UICollectionView.elementKindSectionHeader) {
-            guard let cell = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerReuseIdentifier, for: indexPath) as? CollectionHeaderView
-            else { return UICollectionReusableView() }
+            guard let cell = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerReuseIdentifier, for: indexPath)
+                    as? CollectionHeaderView else { return UICollectionReusableView() }
             
             cell.category.text = itemViewModel.headers[indexPath.section].category
             cell.title.text = itemViewModel.headers[indexPath.section].title
