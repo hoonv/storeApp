@@ -92,7 +92,9 @@ extension ItemListViewController: UICollectionViewDelegate, UICollectionViewData
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellReuseIdentifier, for: indexPath as IndexPath) as? ItemCollectionViewCell else { return UICollectionViewCell() }
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellReuseIdentifier,
+                                                            for: indexPath as IndexPath)
+                as? ItemCollectionViewCell else { return UICollectionViewCell() }
         let item = itemViewModel.items[indexPath.section][indexPath.item]
         
         // init cell
