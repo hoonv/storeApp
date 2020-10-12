@@ -264,7 +264,7 @@
 		E04AFA102521918A009E9F9A /* StoreApp */ = {
 			isa = PBXGroup;
 			children = (
-				E07DA5C9252D40B800F3497B /* ViewModel */,
+				E07DA5C9252D40B800F3497B /* Presenter */,
 				E04AFA462521BF4A009E9F9A /* View */,
 				E04AFA452521BF40009E9F9A /* Controller */,
 				E04AFA442521BF3A009E9F9A /* Model */,
@@ -313,8 +313,7 @@
 		E04AFA452521BF40009E9F9A /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				E0172CC7252C284F00A91671 /* SlideInAnimator.swift */,
-				E0B6D0162533E0E4001B9EB5 /* FadeAnimator.swift */,
+				E0B6D066253462C5001B9EB5 /* Animator */,
 				E0B6CFFE253358B6001B9EB5 /* SignUp */,
 				E0B6D0072533593C001B9EB5 /* ItemList */,
 				E0B6D012253359E4001B9EB5 /* ItemDetail */,
@@ -337,14 +336,14 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		E07DA5C9252D40B800F3497B /* ViewModel */ = {
+		E07DA5C9252D40B800F3497B /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
 				E07DA5D2252D676F00F3497B /* VerifyTextViewModel.swift */,
 				E0D0EBC3252D8CC500116CFF /* StoreItemViewModel.swift */,
 				E0D0EBDA252DE10400116CFF /* SignUpViewModel.swift */,
 			);
-			path = ViewModel;
+			path = Presenter;
 			sourceTree = "<group>";
 		};
 		E0B6CFFE253358B6001B9EB5 /* SignUp */ = {
@@ -401,6 +400,15 @@
 				E0B6D04F25345C61001B9EB5 /* StoreItemResponse.swift */,
 			);
 			path = StoreItem;
+			sourceTree = "<group>";
+		};
+		E0B6D066253462C5001B9EB5 /* Animator */ = {
+			isa = PBXGroup;
+			children = (
+				E0172CC7252C284F00A91671 /* SlideInAnimator.swift */,
+				E0B6D0162533E0E4001B9EB5 /* FadeAnimator.swift */,
+			);
+			path = Animator;
 			sourceTree = "<group>";
 		};
 		E0D0EBAC252D892000116CFF /* Data */ = {
