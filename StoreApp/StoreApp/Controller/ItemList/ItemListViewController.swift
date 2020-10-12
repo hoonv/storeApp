@@ -53,14 +53,14 @@ class ItemListViewController: UIViewController {
         layout?.sectionHeadersPinToVisibleBounds = true
     }
     
-    func presentItemDetailViewController(with data: StoreItem) {
+    func presentItemDetailViewController(with detailHash: String) {
         guard let detailViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "DetailViewController") as? DetailViewController else { return }
 
         // 4
         detailViewController.transitioningDelegate = self
 
         detailViewController.modalPresentationStyle = .fullScreen
-        detailViewController.data = data
+        detailViewController.detailHash = detailHash
         present(detailViewController, animated: true)
     }
 }
