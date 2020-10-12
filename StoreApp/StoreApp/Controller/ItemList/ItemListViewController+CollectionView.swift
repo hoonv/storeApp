@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import NetworkHelper
 
 extension ItemListViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
@@ -54,8 +55,8 @@ extension ItemListViewController: UICollectionViewDelegate, UICollectionViewData
                                                                              for: indexPath)
                     as? CollectionHeaderView else { return UICollectionReusableView() }
             
-            cell.category.text = itemViewModel.headers[indexPath.section].category
-            cell.title.text = itemViewModel.headers[indexPath.section].title
+            cell.category.text = itemViewModel.items[indexPath.section].category
+            cell.title.text = itemViewModel.items[indexPath.section].title
             cell.backgroundColor = .systemBackground
             
             return cell
@@ -66,8 +67,7 @@ extension ItemListViewController: UICollectionViewDelegate, UICollectionViewData
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellReuseIdentifier,
-                                                            for: indexPath as IndexPath)
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellReuseIdentifier, for: indexPath)
                 as? ItemCollectionViewCell else { return UICollectionViewCell() }
         let item = itemViewModel.items[indexPath.section][indexPath.item]
         
@@ -90,9 +90,7 @@ extension ItemListViewController: UICollectionViewDelegate, UICollectionViewData
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let item = itemViewModel.items[indexPath.section][indexPath.item]
-        presentItemDetailViewController(with: item)
-        
-        print(1)
+        let detailHash = itemViewModel.items[indexPath.section][indexPath.item].detailHash
+        presentItemDetailViewController(with: detailHash)
     }
 }
