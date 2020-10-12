@@ -43,6 +43,7 @@
 		E0B6D0392533F2EA001B9EB5 /* NetworkHelper.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E0B6D0232533F2EA001B9EB5 /* NetworkHelper.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E0B6D04625344527001B9EB5 /* NetworkHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0B6D04525344527001B9EB5 /* NetworkHelper.swift */; };
 		E0B6D05025345C61001B9EB5 /* StoreItemResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0B6D04F25345C61001B9EB5 /* StoreItemResponse.swift */; };
+		E0B8C2E8253498B500E77874 /* DetailStoreItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0B8C2E7253498B500E77874 /* DetailStoreItem.swift */; };
 		E0C6D86F252979EA00A834E2 /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C6D86E252979EA00A834E2 /* Validator.swift */; };
 		E0D0EBB9252D89BC00116CFF /* main.json in Resources */ = {isa = PBXBuildFile; fileRef = E0D0EBB6252D89BB00116CFF /* main.json */; };
 		E0D0EBBA252D89BC00116CFF /* side.json in Resources */ = {isa = PBXBuildFile; fileRef = E0D0EBB7252D89BB00116CFF /* side.json */; };
@@ -153,6 +154,7 @@
 		E0B6D0342533F2EA001B9EB5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E0B6D04525344527001B9EB5 /* NetworkHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkHelper.swift; sourceTree = "<group>"; };
 		E0B6D04F25345C61001B9EB5 /* StoreItemResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreItemResponse.swift; sourceTree = "<group>"; };
+		E0B8C2E7253498B500E77874 /* DetailStoreItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailStoreItem.swift; sourceTree = "<group>"; };
 		E0C6D86E252979EA00A834E2 /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
 		E0D0EBB6252D89BB00116CFF /* main.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = main.json; sourceTree = "<group>"; };
 		E0D0EBB7252D89BB00116CFF /* side.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = side.json; sourceTree = "<group>"; };
@@ -398,6 +400,7 @@
 				E0172CD5252C4B6200A91671 /* StoreItem.swift */,
 				E0D0EBC8252D8E9800116CFF /* StoreItems.swift */,
 				E0B6D04F25345C61001B9EB5 /* StoreItemResponse.swift */,
+				E0B8C2E7253498B500E77874 /* DetailStoreItem.swift */,
 			);
 			path = StoreItem;
 			sourceTree = "<group>";
@@ -700,6 +703,7 @@
 				E0172CB8252B16EB00A91671 /* User.swift in Sources */,
 				E0D0EBD1252DAE1B00116CFF /* StringExtension.swift in Sources */,
 				E0D0EBC9252D8E9800116CFF /* StoreItems.swift in Sources */,
+				E0B8C2E8253498B500E77874 /* DetailStoreItem.swift in Sources */,
 				E0172CB3252B0F3500A91671 /* Notification.swift in Sources */,
 				E04AFA142521918A009E9F9A /* SceneDelegate.swift in Sources */,
 				E0172CE5252C52B700A91671 /* StoreItemLoader.swift in Sources */,

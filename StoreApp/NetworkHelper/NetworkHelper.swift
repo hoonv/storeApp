@@ -21,7 +21,7 @@ public class NetworkLayer {
         
     }
     
-    public func fetchModel<T: Decodable>(from url: String, completion: @escaping (Result<T,APIError>) -> Void) {
+    public func dataTask<T: Decodable>(from url: String, completion: @escaping (Result<T,APIError>) -> Void) {
 
         guard let url = URL(string: url) else { return completion(.failure(.url))}
         
@@ -36,6 +36,29 @@ public class NetworkLayer {
                 completion(.success(model))
             } catch {
                 completion(.failure(.decodingJSON))
+            }
+            
+        }.resume()
+    }
+    
+    public func downloadTaskToCache(from url: String) {
+    
+        guard let url = URL(string: url) else { return }
+
+        URLSession.shared.downloadTask(with: url) { urlOrNil, responseOrNil, errorOrNil in
+            
+            guard let fileURL = urlOrNil else { return }
+            
+            do {
+                let cacheURL = try FileManager.default.url(for: .cachesDirectory,
+                                                           in: .userDomainMask,
+                                                           appropriateFor: nil,
+                                                           create: false)
+                let savedURL = cacheURL.appendingPathComponent(fileURL.lastPathComponent)
+                try FileManager.default.moveItem(at: fileURL, to: savedURL)
+                print(savedURL)
+            } catch {
+                print("error")
             }
             
         }.resume()
