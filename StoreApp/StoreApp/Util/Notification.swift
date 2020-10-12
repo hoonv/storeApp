@@ -8,6 +8,10 @@
 import Foundation
 
 extension Notification.Name {
+    
     static let UIKeyboardWillShow = Notification.Name("UIKeyboardWillShow")
+    
     static let UIKeyboardWillHide = Notification.Name("UIKeyboardWillHide")
+
+    static let StoreItemDidChange = Notification.Name("StoreItemDidChange")
 }
