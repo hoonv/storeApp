@@ -20,6 +20,7 @@ final class SlideInAnimator: NSObject, UIViewControllerAnimatedTransitioning {
         else {
             return
         }
+        
         let containerView = ctx.containerView
         let initialFrame = ctx.initialFrame(for: fromVC)
         let finalFrame = ctx.finalFrame(for: toVC)

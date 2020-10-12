@@ -9,7 +9,7 @@ import Foundation
 
 extension String {
     
-    func cancelLine() -> NSMutableAttributedString {
+    func addCancelLine() -> NSMutableAttributedString {
         let attributeString: NSMutableAttributedString = NSMutableAttributedString(string: self)
             attributeString.addAttribute(NSAttributedString.Key.strikethroughStyle, value: 2, range: NSMakeRange(0, attributeString.length))
         return attributeString

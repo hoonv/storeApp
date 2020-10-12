@@ -10,7 +10,6 @@ import XCTest
 
 class StoreAppTests: XCTestCase {
 
-    
     let idValidator = IdValidator()
     let pwValidator = PwValidator()
     let nameValidator = NameValidator()
