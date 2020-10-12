@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import NetworkHelper
 
 class ItemListViewController: UIViewController {
 
@@ -24,14 +25,30 @@ class ItemListViewController: UIViewController {
         setupCollectionView()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(storeItemDidChange(_:)),
+                                               name: .StoreItemDidChange,
+                                               object: nil)
+    }
+    
+    @objc func storeItemDidChange(_ sender: Notification) {
+        DispatchQueue.main.async { [weak self] in
+            self?.itemCollectionView.reloadData()
+        }
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+    }
+    
     private func setupCollectionView() {
         itemCollectionView.register(UINib(nibName: "ItemCollectionViewCell", bundle: nil),
                                     forCellWithReuseIdentifier: cellReuseIdentifier)
         itemCollectionView.register(UINib(nibName: "CollectionHeaderView",bundle: nil),
                                     forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
                                     withReuseIdentifier: headerReuseIdentifier)
-        itemCollectionView.delegate = self
-        itemCollectionView.dataSource = self
         let layout = itemCollectionView.collectionViewLayout as? UICollectionViewFlowLayout
         layout?.sectionHeadersPinToVisibleBounds = true
     }
