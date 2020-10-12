@@ -7,23 +7,20 @@
 
 import Foundation
 
-class StoreItems {
+struct StoreItems {
     
+    static let empty = StoreItems(items: [], title: "", category: "")
     var items: [StoreItem]
+    var title: String
+    var category: String
     var count: Int {
         get { return items.count }
     }
     
-    init(items: [StoreItem]) {
+    init(items: [StoreItem], title: String, category: String) {
         self.items = items
-    }
-    
-    public func append(_ newElement: StoreItem) {
-        items.append(newElement)
-    }
-    
-    public func popLast() -> StoreItem? {
-        return items.popLast()
+        self.title = title
+        self.category = category
     }
     
     private func indexIsValid(index: Int) -> Bool {
