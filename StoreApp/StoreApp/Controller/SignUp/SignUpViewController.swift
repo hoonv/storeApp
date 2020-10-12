@@ -48,7 +48,7 @@ class SignUpViewController: UIViewController {
     
     private func setupUI() {
         view.backgroundColor = UIColor(named: "BackgroundColor")
-        nextButton.layer.cornerRadius = 5
+        nextButton.layer.cornerRadius = Constant.cornerRadius
     }
     
     private func setupTextFieldDataSource() {
@@ -70,13 +70,13 @@ class SignUpViewController: UIViewController {
         let second = secondPWTextView.textField.rx.text.orEmpty
         // input
         Observable.combineLatest(first, second)
-            .debounce(.milliseconds(1500), scheduler: ConcurrentMainScheduler.instance )
+            .debounce(.milliseconds(Constant.debounceMilliDelay), scheduler: ConcurrentMainScheduler.instance )
             .bind(to: signUpViewModel.passwordsCombine)
             .disposed(by: disposeBag)
         
         // output
         signUpViewModel.passwordsCombine
-            .filter{ $0.0.count != 0 && $0.1.count != 0 }
+            .filter { $0.0.count != 0 && $0.1.count != 0 }
             .map { $0.0 == $0.1 }
             .subscribe(onNext: { [weak self] in
                 self?.signUpViewModel.isPWEqual = $0
@@ -94,7 +94,7 @@ class SignUpViewController: UIViewController {
         // input
         verifyView.textField.rx.text.orEmpty
             .filter{ $0.count != 0 }
-            .debounce(.milliseconds(1500), scheduler: ConcurrentMainScheduler.instance )
+            .debounce(.milliseconds(Constant.debounceMilliDelay), scheduler: ConcurrentMainScheduler.instance )
             .bind(to: verifyViewModel.textFieldValueChanged)
             .disposed(by: disposeBag)
         
@@ -128,20 +128,29 @@ class SignUpViewController: UIViewController {
         self.view.frame.origin.y = 0
     }
     
+    private func presentItemListViewController() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let itemList = storyboard.instantiateViewController(withIdentifier: "ItemListViewController")
+        itemList.transitioningDelegate = self
+        self.present(itemList, animated: true)
+    }
+    
     @IBAction func nextOnTouch(_ sender: Any) {
         if idViewModel.status && firstPWViewModel.status
             && signUpViewModel.isPWEqual && nameViewModel.status {
             saveUserInfo()
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let itemList = storyboard.instantiateViewController(withIdentifier: "ItemListViewController")
-            itemList.transitioningDelegate = self
-            self.present(itemList, animated: true)
+            presentItemListViewController()
         }
+
     }
 }
 
-extension SignUpViewController: UIViewControllerTransitioningDelegate {
-    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return SlideInAnimator()
+
+extension SignUpViewController {
+    
+    enum Constant {
+        
+        static let cornerRadius: CGFloat = 5
+        static let debounceMilliDelay = 1500
     }
 }
