@@ -30,7 +30,6 @@ public class NetworkLayer {
             guard let data = data else {
                 return completion(.failure(.data))
             }
-            
             do {
                 let model = try JSONDecoder().decode(T.self, from: data)
                 completion(.success(model))
@@ -41,26 +40,27 @@ public class NetworkLayer {
         }.resume()
     }
     
-    public func downloadTaskToCache(from url: String) {
+    public func downloadTaskToCache(from url: String, name: String, completion: @escaping (Result<URL,APIError>) -> Void) {
     
-        guard let url = URL(string: url) else { return }
+        guard let url = URL(string: url) else { return completion(.failure(.url)) }
 
         URLSession.shared.downloadTask(with: url) { urlOrNil, responseOrNil, errorOrNil in
             
-            guard let fileURL = urlOrNil else { return }
+            guard let fileURL = urlOrNil else { return completion(.failure(.url)) }
             
             do {
-                let cacheURL = try FileManager.default.url(for: .cachesDirectory,
-                                                           in: .userDomainMask,
-                                                           appropriateFor: nil,
-                                                           create: false)
-                let savedURL = cacheURL.appendingPathComponent(fileURL.lastPathComponent)
+                let cacheURL = try
+                    FileManager.default.url(for: .cachesDirectory,
+                                            in: .userDomainMask,
+                                            appropriateFor: nil,
+                                            create: false)
+                let savedURL = cacheURL.appendingPathComponent(name)
                 try FileManager.default.moveItem(at: fileURL, to: savedURL)
-                print(savedURL)
+                completion(.success(savedURL))
+
             } catch {
-                print("error")
+                completion(.failure(.data))
             }
-            
         }.resume()
     }
 }

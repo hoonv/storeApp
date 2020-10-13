@@ -21,6 +21,7 @@
 		E0172D02252C80A400A91671 /* ItemCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0172D00252C80A400A91671 /* ItemCollectionViewCell.xib */; };
 		E0172D08252C96EF00A91671 /* CollectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0172D06252C96EF00A91671 /* CollectionHeaderView.swift */; };
 		E0172D09252C96EF00A91671 /* CollectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0172D07252C96EF00A91671 /* CollectionHeaderView.xib */; };
+		E045B03E2535E93400CDB74B /* DetailStoreItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E045B03D2535E93400CDB74B /* DetailStoreItemViewModel.swift */; };
 		E04AFA122521918A009E9F9A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E04AFA112521918A009E9F9A /* AppDelegate.swift */; };
 		E04AFA142521918A009E9F9A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E04AFA132521918A009E9F9A /* SceneDelegate.swift */; };
 		E04AFA162521918A009E9F9A /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E04AFA152521918A009E9F9A /* SignUpViewController.swift */; };
@@ -44,6 +45,7 @@
 		E0B6D04625344527001B9EB5 /* NetworkHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0B6D04525344527001B9EB5 /* NetworkHelper.swift */; };
 		E0B6D05025345C61001B9EB5 /* StoreItemResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0B6D04F25345C61001B9EB5 /* StoreItemResponse.swift */; };
 		E0B8C2E8253498B500E77874 /* DetailStoreItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0B8C2E7253498B500E77874 /* DetailStoreItem.swift */; };
+		E0B8C2EE253570A900E77874 /* ImageScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0B8C2ED253570A900E77874 /* ImageScrollView.swift */; };
 		E0C6D86F252979EA00A834E2 /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C6D86E252979EA00A834E2 /* Validator.swift */; };
 		E0D0EBB9252D89BC00116CFF /* main.json in Resources */ = {isa = PBXBuildFile; fileRef = E0D0EBB6252D89BB00116CFF /* main.json */; };
 		E0D0EBBA252D89BC00116CFF /* side.json in Resources */ = {isa = PBXBuildFile; fileRef = E0D0EBB7252D89BB00116CFF /* side.json */; };
@@ -123,6 +125,7 @@
 		E0172D00252C80A400A91671 /* ItemCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemCollectionViewCell.xib; sourceTree = "<group>"; };
 		E0172D06252C96EF00A91671 /* CollectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionHeaderView.swift; sourceTree = "<group>"; };
 		E0172D07252C96EF00A91671 /* CollectionHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CollectionHeaderView.xib; sourceTree = "<group>"; };
+		E045B03D2535E93400CDB74B /* DetailStoreItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailStoreItemViewModel.swift; sourceTree = "<group>"; };
 		E04AFA0E2521918A009E9F9A /* StoreApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StoreApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E04AFA112521918A009E9F9A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E04AFA132521918A009E9F9A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -155,6 +158,7 @@
 		E0B6D04525344527001B9EB5 /* NetworkHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkHelper.swift; sourceTree = "<group>"; };
 		E0B6D04F25345C61001B9EB5 /* StoreItemResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreItemResponse.swift; sourceTree = "<group>"; };
 		E0B8C2E7253498B500E77874 /* DetailStoreItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailStoreItem.swift; sourceTree = "<group>"; };
+		E0B8C2ED253570A900E77874 /* ImageScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageScrollView.swift; sourceTree = "<group>"; };
 		E0C6D86E252979EA00A834E2 /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
 		E0D0EBB6252D89BB00116CFF /* main.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = main.json; sourceTree = "<group>"; };
 		E0D0EBB7252D89BB00116CFF /* side.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = side.json; sourceTree = "<group>"; };
@@ -334,6 +338,7 @@
 				E0172D06252C96EF00A91671 /* CollectionHeaderView.swift */,
 				E0172D07252C96EF00A91671 /* CollectionHeaderView.xib */,
 				E0D0EBD5252DB85600116CFF /* BadgeLabel.swift */,
+				E0B8C2ED253570A900E77874 /* ImageScrollView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -344,6 +349,7 @@
 				E07DA5D2252D676F00F3497B /* VerifyTextViewModel.swift */,
 				E0D0EBC3252D8CC500116CFF /* StoreItemViewModel.swift */,
 				E0D0EBDA252DE10400116CFF /* SignUpViewModel.swift */,
+				E045B03D2535E93400CDB74B /* DetailStoreItemViewModel.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -696,6 +702,7 @@
 				E0172D01252C80A400A91671 /* ItemCollectionViewCell.swift in Sources */,
 				E0172CA2252B0E7100A91671 /* VerifyTextViewDataSource.swift in Sources */,
 				E0172D08252C96EF00A91671 /* CollectionHeaderView.swift in Sources */,
+				E045B03E2535E93400CDB74B /* DetailStoreItemViewModel.swift in Sources */,
 				E0B6D0172533E0E4001B9EB5 /* FadeAnimator.swift in Sources */,
 				E0D0EBC4252D8CC500116CFF /* StoreItemViewModel.swift in Sources */,
 				E0B6D05025345C61001B9EB5 /* StoreItemResponse.swift in Sources */,
@@ -712,6 +719,7 @@
 				E0D0EBD6252DB85600116CFF /* BadgeLabel.swift in Sources */,
 				E07DA5D3252D676F00F3497B /* VerifyTextViewModel.swift in Sources */,
 				E0D0EBDB252DE10400116CFF /* SignUpViewModel.swift in Sources */,
+				E0B8C2EE253570A900E77874 /* ImageScrollView.swift in Sources */,
 				E0172CC8252C284F00A91671 /* SlideInAnimator.swift in Sources */,
 				E0B6D000253358E4001B9EB5 /* SignUpViewController+TransitioningDelegate.swift in Sources */,
 			);
