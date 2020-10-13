@@ -275,7 +275,6 @@
 				E04AFA452521BF40009E9F9A /* Controller */,
 				E04AFA442521BF3A009E9F9A /* Model */,
 				E0172CB1252B0F2500A91671 /* Util */,
-				E0D0EBC2252D8C4000116CFF /* DataSource */,
 				E0D0EBAC252D892000116CFF /* Data */,
 				E04AFA112521918A009E9F9A /* AppDelegate.swift */,
 				E04AFA132521918A009E9F9A /* SceneDelegate.swift */,
@@ -350,6 +349,7 @@
 				E0D0EBC3252D8CC500116CFF /* StoreItemViewModel.swift */,
 				E0D0EBDA252DE10400116CFF /* SignUpViewModel.swift */,
 				E045B03D2535E93400CDB74B /* DetailStoreItemViewModel.swift */,
+				E0172CA1252B0E7100A91671 /* VerifyTextViewDataSource.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -428,14 +428,6 @@
 				E0D0EBB8252D89BB00116CFF /* soup.json */,
 			);
 			path = Data;
-			sourceTree = "<group>";
-		};
-		E0D0EBC2252D8C4000116CFF /* DataSource */ = {
-			isa = PBXGroup;
-			children = (
-				E0172CA1252B0E7100A91671 /* VerifyTextViewDataSource.swift */,
-			);
-			path = DataSource;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
