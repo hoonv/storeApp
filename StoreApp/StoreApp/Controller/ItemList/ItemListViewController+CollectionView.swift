@@ -65,32 +65,24 @@ extension ItemListViewController: UICollectionViewDelegate, UICollectionViewData
         }
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    func collectionView(_ collectionView: UICollectionView,
+                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellReuseIdentifier, for: indexPath)
                 as? ItemCollectionViewCell else { return UICollectionViewCell() }
+        
         let item = itemViewModel.items[indexPath.section][indexPath.item]
-        
         cell.configure(with: item, badges: itemViewModel.badges, colors: badgeColors)
-        
-        //setup image
-        DispatchQueue.global().async {
-            do {
-                guard let url = URL(string: item.image) else { return }
-                let data = try Data(contentsOf: url)
-                DispatchQueue.main.async {
-                    cell.imageView.image = UIImage(data: data)
-                }
-            } catch {
-                print("error")
-            }
-        }
-
+        setImageLocalOrNetwork(imageView: cell.imageView, item: item)
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let detailHash = itemViewModel.items[indexPath.section][indexPath.item].detailHash
-        presentItemDetailViewController(with: detailHash)
+        let detailItem = itemViewModel.items[indexPath.section][indexPath.item]
+        
+        selectedCell = collectionView.cellForItem(at: indexPath) as? ItemCollectionViewCell
+        selectedImageSnapShot = selectedCell?.imageView.snapshotView(afterScreenUpdates: false)
+        
+        presentItemDetailViewController(with: detailItem)
     }
 }

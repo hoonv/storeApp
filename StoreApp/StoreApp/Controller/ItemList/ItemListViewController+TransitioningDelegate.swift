@@ -9,13 +9,29 @@ import UIKit
 
 extension ItemListViewController: UIViewControllerTransitioningDelegate {
     func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        let transition = FadeAnimator()
-        transition.imageView = self.imageView
-        return transition
+        guard let firstViewController = presenting as? ItemListViewController,
+              let secondViewController = presented as? DetailViewController,
+              let selectedCellImageSnapShot = selectedImageSnapShot
+        else { return nil }
+        
+        animator = FadeAnimator(type: .present,
+                                firstViewController: firstViewController,
+                                secondViewController: secondViewController,
+                                selectedCellImageViewSnapshot: selectedCellImageSnapShot)
+        
+        return animator
     }
     
     func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return nil
+        guard let secondViewController = dismissed as? DetailViewController,
+            let selectedCellImageViewSnapshot = selectedImageSnapShot
+            else { return nil }
+
+        animator = FadeAnimator(type: .dismiss,
+                                firstViewController: self,
+                                secondViewController: secondViewController,
+                                selectedCellImageViewSnapshot: selectedCellImageViewSnapshot)
+        return animator
     }
     
 }

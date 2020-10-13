@@ -17,7 +17,10 @@ class ItemListViewController: UIViewController {
                        #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)]
     var itemViewModel = StoreItemViewModel()
     var imageView: UIImageView?
-
+    var animator: FadeAnimator?
+    var selectedCell: ItemCollectionViewCell?
+    var selectedImageSnapShot: UIView?
+    
     @IBOutlet weak var itemCollectionView: UICollectionView!
 
     override func viewDidLoad() {
@@ -43,6 +46,17 @@ class ItemListViewController: UIViewController {
         super.viewDidDisappear(animated)
     }
     
+    func presentItemDetailViewController(with detailItem: StoreItem) {
+        guard let detailViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "DetailViewController") as? DetailViewController else { return }
+
+        // 4
+        detailViewController.transitioningDelegate = self
+
+        detailViewController.modalPresentationStyle = .fullScreen
+        detailViewController.detailItem = detailItem
+        present(detailViewController, animated: true)
+    }
+    
     private func setupCollectionView() {
         itemCollectionView.register(UINib(nibName: "ItemCollectionViewCell", bundle: nil),
                                     forCellWithReuseIdentifier: cellReuseIdentifier)
@@ -53,14 +67,41 @@ class ItemListViewController: UIViewController {
         layout?.sectionHeadersPinToVisibleBounds = true
     }
     
-    func presentItemDetailViewController(with detailHash: String) {
-        guard let detailViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "DetailViewController") as? DetailViewController else { return }
-
-        // 4
-        detailViewController.transitioningDelegate = self
-
-        detailViewController.modalPresentationStyle = .fullScreen
-        detailViewController.detailHash = detailHash
-        present(detailViewController, animated: true)
+    private func setImageLocalOrNetwork(imageView: UIImageView, item: StoreItem) {
+        
+        guard
+            let fileURL = try? FileManager.default.url(for: .cachesDirectory,
+                                                       in: .userDomainMask,
+                                                       appropriateFor: nil,
+                                                       create: false)
+                .appendingPathComponent(item.detailHash) else { return }
+        
+        
+        if FileManager.default.fileExists(atPath: fileURL.path) {
+            setImage(to: imageView, url: fileURL)
+        } else {
+            NetworkLayer.shared.downloadTaskToCache(from: item.image, name: item.detailHash) {
+                (result: Result<URL,APIError>) in
+                switch result {
+                case .success(let url):
+                    self.setImage(to: imageView, url: url)
+                case .failure(let error):
+                    print(error)
+                }
+            }
+        }
+    }
+    
+    private func setImage(to target: UIImageView, url: URL) {
+        DispatchQueue.global().async {
+            do {
+                let data = try Data(contentsOf: url)
+                DispatchQueue.main.async {
+                    target.image = UIImage(data: data)
+                }
+            } catch {
+                target.image = nil
+            }
+        }
     }
 }
