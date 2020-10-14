@@ -66,7 +66,6 @@ class DetailViewController: UIViewController {
                     imageView.image = image
                     imageView.contentMode = .scaleAspectFit
                     self?.detailSectionStackView.addArrangedSubview(imageView)
-                    
                     imageView.translatesAutoresizingMaskIntoConstraints = false
                     imageView.heightAnchor.constraint(equalTo: imageView.widthAnchor, multiplier: 1).isActive = true
                 }

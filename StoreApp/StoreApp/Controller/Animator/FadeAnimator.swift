@@ -52,7 +52,6 @@ final class FadeAnimator: NSObject, UIViewControllerAnimatedTransitioning {
 
         guard let selectedCell = firstViewController.selectedCell,
               let window = firstViewController.view.window ?? secondViewController.view.window,
-              let cellImageSnapshot = selectedCell.imageView.snapshotView(afterScreenUpdates: true),
               let controllerImageSnapshot = secondViewController.hiddenImageView.snapshotView(afterScreenUpdates: true),
               let descriptionSnapshot = secondViewController.descriptionView.snapshotView(afterScreenUpdates: true)
         else {
@@ -70,11 +69,16 @@ final class FadeAnimator: NSObject, UIViewControllerAnimatedTransitioning {
         let controllerImageViewRect = secondViewController.hiddenImageView.convert(secondViewController.hiddenImageView.bounds, to: window)
         let descriptionViewRect = secondViewController.descriptionView.convert(secondViewController.descriptionView.bounds, to: window)
         var backgoundViewRect = descriptionViewRect
+        
         backgroundView.backgroundColor = secondViewController.view.backgroundColor
         backgoundViewRect.origin.y += descriptionViewRect.height
         toView.alpha = 0
         
-        [firstViewSnapshot, selectedCellImageViewSnapshot, controllerImageSnapshot, descriptionSnapshot, backgroundView].forEach { containerView.addSubview($0) }
+        [firstViewSnapshot,
+         selectedCellImageViewSnapshot,
+         controllerImageSnapshot,
+         descriptionSnapshot,
+         backgroundView].forEach { containerView.addSubview($0) }
 
         descriptionSnapshot.frame = descriptionViewRect
         backgroundView.frame = backgoundViewRect
@@ -90,7 +94,6 @@ final class FadeAnimator: NSObject, UIViewControllerAnimatedTransitioning {
         UIView.animateKeyframes(withDuration: Self.duration, delay: 0, options: .calculationModeCubic, animations: {
 
             UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 1) {
-
                 self.selectedCellImageViewSnapshot.frame = isPresenting ? controllerImageViewRect : self.cellImageViewRect
                 controllerImageSnapshot.frame = isPresenting ? controllerImageViewRect : self.cellImageViewRect
                 descriptionSnapshot.alpha = isPresenting ? 1: 0
@@ -101,12 +104,14 @@ final class FadeAnimator: NSObject, UIViewControllerAnimatedTransitioning {
                 self.selectedCellImageViewSnapshot.alpha = isPresenting ? 0 : 1
                 controllerImageSnapshot.alpha = isPresenting ? 1 : 0
             }
+            
         }, completion: { _ in
-            self.selectedCellImageViewSnapshot.removeFromSuperview()
-            controllerImageSnapshot.removeFromSuperview()
-            firstViewSnapshot.removeFromSuperview()
-            descriptionSnapshot.removeFromSuperview()
-            backgroundView.removeFromSuperview()
+            
+            [self.selectedCellImageViewSnapshot,
+             controllerImageSnapshot,
+             firstViewSnapshot,
+             descriptionSnapshot,
+             backgroundView].forEach { $0.removeFromSuperview() }
             
             toView.alpha = 1
             
