@@ -155,16 +155,64 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rmh-zS-QRR">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="300"/>
-                            </imageView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8VO-4V-LSU" customClass="ImageScrollView" customModule="StoreApp" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="300"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4N9-eQ-6BX">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MFe-rL-llK">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rmh-zS-QRR">
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="300"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="300" id="PXo-2w-Pih"/>
+                                                </constraints>
+                                            </imageView>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8VO-4V-LSU" customClass="ImageScrollView" customModule="StoreApp" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="300"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="300" id="yAy-eh-J5F"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="esd-gh-Z6I" customClass="DetailDescriptionView" customModule="StoreApp" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="300" width="414" height="300"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="300" id="iUq-SV-bfh"/>
+                                                </constraints>
+                                            </view>
+                                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="bfk-io-Qmd">
+                                                <rect key="frame" x="0.0" y="575" width="414" height="132"/>
+                                            </stackView>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstItem="rmh-zS-QRR" firstAttribute="top" secondItem="MFe-rL-llK" secondAttribute="top" id="2eV-XW-ceR"/>
+                                            <constraint firstItem="bfk-io-Qmd" firstAttribute="leading" secondItem="MFe-rL-llK" secondAttribute="leading" id="6Fa-ol-5I0"/>
+                                            <constraint firstItem="8VO-4V-LSU" firstAttribute="leading" secondItem="MFe-rL-llK" secondAttribute="leading" id="6O5-ZD-0MV"/>
+                                            <constraint firstItem="esd-gh-Z6I" firstAttribute="top" secondItem="8VO-4V-LSU" secondAttribute="bottom" id="DcP-Kg-JDO"/>
+                                            <constraint firstAttribute="bottom" secondItem="bfk-io-Qmd" secondAttribute="bottom" id="I1A-Hi-bse"/>
+                                            <constraint firstAttribute="trailing" secondItem="rmh-zS-QRR" secondAttribute="trailing" id="I2n-Wf-uU0"/>
+                                            <constraint firstItem="rmh-zS-QRR" firstAttribute="leading" secondItem="MFe-rL-llK" secondAttribute="leading" id="IF9-7o-6Xz"/>
+                                            <constraint firstItem="esd-gh-Z6I" firstAttribute="leading" secondItem="MFe-rL-llK" secondAttribute="leading" id="Tgk-1q-WT0"/>
+                                            <constraint firstAttribute="trailing" secondItem="8VO-4V-LSU" secondAttribute="trailing" id="Ul6-CS-Tni"/>
+                                            <constraint firstAttribute="trailing" secondItem="esd-gh-Z6I" secondAttribute="trailing" id="cXJ-eT-Q3h"/>
+                                            <constraint firstAttribute="trailing" secondItem="bfk-io-Qmd" secondAttribute="trailing" id="nwo-Jm-LNN"/>
+                                            <constraint firstItem="8VO-4V-LSU" firstAttribute="top" secondItem="MFe-rL-llK" secondAttribute="top" id="tQc-uw-G0K"/>
+                                            <constraint firstItem="bfk-io-Qmd" firstAttribute="top" secondItem="esd-gh-Z6I" secondAttribute="bottom" id="wiF-6a-uAo"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="300" id="EWB-JG-TXO"/>
+                                    <constraint firstItem="MFe-rL-llK" firstAttribute="bottom" secondItem="DzJ-aX-bmf" secondAttribute="bottom" id="8kZ-IW-9pF"/>
+                                    <constraint firstItem="MFe-rL-llK" firstAttribute="trailing" secondItem="DzJ-aX-bmf" secondAttribute="trailing" id="OcL-Jd-2AW"/>
+                                    <constraint firstItem="MFe-rL-llK" firstAttribute="leading" secondItem="DzJ-aX-bmf" secondAttribute="leading" id="TUt-Ut-N4u"/>
+                                    <constraint firstItem="MFe-rL-llK" firstAttribute="width" secondItem="wYw-A0-Lf9" secondAttribute="width" id="Zny-PG-n3Z"/>
+                                    <constraint firstItem="MFe-rL-llK" firstAttribute="top" secondItem="DzJ-aX-bmf" secondAttribute="top" id="gcA-sa-zuk"/>
                                 </constraints>
-                            </view>
+                                <viewLayoutGuide key="contentLayoutGuide" id="DzJ-aX-bmf"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="wYw-A0-Lf9"/>
+                            </scrollView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jky-hd-09u">
                                 <rect key="frame" x="20" y="12.666666666666664" width="25" height="20"/>
                                 <constraints>
@@ -180,34 +228,23 @@
                                     <action selector="closeTouched:" destination="w80-Zc-lt7" eventType="touchUpInside" id="mqM-Ah-utt"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="esd-gh-Z6I" customClass="DetailDescriptionView" customModule="StoreApp" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="300" width="414" height="436"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="436" id="kc5-zz-YCr"/>
-                                </constraints>
-                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="55M-3k-mnc"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="8VO-4V-LSU" firstAttribute="trailing" secondItem="55M-3k-mnc" secondAttribute="trailing" id="1Xv-9c-q4A"/>
                             <constraint firstItem="Jky-hd-09u" firstAttribute="top" secondItem="55M-3k-mnc" secondAttribute="top" constant="10" id="1zs-NF-6GQ"/>
-                            <constraint firstItem="esd-gh-Z6I" firstAttribute="trailing" secondItem="55M-3k-mnc" secondAttribute="trailing" id="DkQ-j7-dnb"/>
-                            <constraint firstItem="esd-gh-Z6I" firstAttribute="leading" secondItem="55M-3k-mnc" secondAttribute="leading" id="FHO-Pl-A6W"/>
-                            <constraint firstItem="rmh-zS-QRR" firstAttribute="leading" secondItem="55M-3k-mnc" secondAttribute="leading" id="Jy3-VK-d6g"/>
-                            <constraint firstItem="8VO-4V-LSU" firstAttribute="leading" secondItem="55M-3k-mnc" secondAttribute="leading" id="Yd7-S0-MJi"/>
-                            <constraint firstItem="8VO-4V-LSU" firstAttribute="top" secondItem="yBq-Wd-4UF" secondAttribute="top" id="abu-JL-EBM"/>
-                            <constraint firstItem="rmh-zS-QRR" firstAttribute="height" secondItem="8VO-4V-LSU" secondAttribute="height" id="bU5-mP-Ihi"/>
+                            <constraint firstItem="4N9-eQ-6BX" firstAttribute="bottom" secondItem="55M-3k-mnc" secondAttribute="bottom" id="XnX-9c-dk6"/>
+                            <constraint firstItem="4N9-eQ-6BX" firstAttribute="trailing" secondItem="55M-3k-mnc" secondAttribute="trailing" id="g6H-Xq-kZe"/>
                             <constraint firstItem="Jky-hd-09u" firstAttribute="leading" secondItem="55M-3k-mnc" secondAttribute="leading" constant="20" id="l1t-6v-jjV"/>
-                            <constraint firstItem="esd-gh-Z6I" firstAttribute="top" secondItem="8VO-4V-LSU" secondAttribute="bottom" id="n75-cI-WcL"/>
-                            <constraint firstItem="rmh-zS-QRR" firstAttribute="top" secondItem="yBq-Wd-4UF" secondAttribute="top" id="nEu-nc-A4H"/>
-                            <constraint firstItem="rmh-zS-QRR" firstAttribute="trailing" secondItem="55M-3k-mnc" secondAttribute="trailing" id="xO5-7D-4HS"/>
+                            <constraint firstItem="4N9-eQ-6BX" firstAttribute="top" secondItem="55M-3k-mnc" secondAttribute="top" id="qj4-ZS-QW9"/>
+                            <constraint firstItem="4N9-eQ-6BX" firstAttribute="leading" secondItem="55M-3k-mnc" secondAttribute="leading" id="v89-yE-erb"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="closeButton" destination="Jky-hd-09u" id="Fev-vC-61K"/>
+                        <outlet property="contentView" destination="MFe-rL-llK" id="jGP-eF-Ofk"/>
                         <outlet property="descriptionView" destination="esd-gh-Z6I" id="6xt-Kf-Vmm"/>
+                        <outlet property="detailSectionStackView" destination="bfk-io-Qmd" id="ezO-d0-Zf5"/>
                         <outlet property="hiddenImageView" destination="rmh-zS-QRR" id="pj9-Sb-xKP"/>
                         <outlet property="imageScrollView" destination="8VO-4V-LSU" id="I70-ey-50j"/>
                     </connections>

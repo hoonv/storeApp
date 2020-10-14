@@ -8,7 +8,18 @@
 import UIKit
 import NetworkHelper
 
-func setImageLocalOrNetwork(imageView: UIImageView, item: StoreItem) {
+func getImageByString(name: String) -> UIImage? {
+    guard let url = URL(string: name) else { return nil }
+    do {
+        let data = try Data(contentsOf: url)
+        return UIImage(data: data)
+    } catch {
+        return nil
+    }
+}
+
+
+func setImageFromLocalOrNetwork(imageView: UIImageView, item: StoreItem) {
     
     guard
         let fileURL = try? FileManager.default.url(for: .cachesDirectory,
