@@ -59,11 +59,11 @@ class DetailDescriptionView: UIView {
         
         deliveryFee.translatesAutoresizingMaskIntoConstraints = false
         deliveryFee.font = UIFont.systemFont(ofSize: 15, weight: .semibold)
-
+        deliveryFee.text = "배송비 2,500원 (40,000원 이상 구매 시 무료)"
         deliveryInfo.translatesAutoresizingMaskIntoConstraints = false
         deliveryInfo.font = UIFont.systemFont(ofSize: 13, weight: .medium)
         deliveryInfo.numberOfLines = 2
-        deliveryInfo.text = "🚛"
+        deliveryInfo.text = "🚛 서울 경기 새벽배송 / 전국택배 (제주 및 도서산간 불가) [화 · 수 · 목 · 금 · 토] 수령 가능한 상품입니다."
   
         addSubview(sPrice)
         addSubview(title)
@@ -116,7 +116,6 @@ class DetailDescriptionView: UIView {
             nPrice.text = ""
             salePercent.text = ""
             sPriceTopConstraint.constant = 25
-
         }
     }
     
@@ -125,7 +124,7 @@ class DetailDescriptionView: UIView {
         let point = storeItem.data.point
         let fee = storeItem.data.deliveryFee
         let info = storeItem.data.deliveryInfo
-        
+
         pointButton.setTitle("💰 구매시 포인트 최대 \(point) 적립", for: .normal)
         deliveryInfo.text = "🚛 \(info)"
         deliveryFee.text = "배송비 \(fee)"

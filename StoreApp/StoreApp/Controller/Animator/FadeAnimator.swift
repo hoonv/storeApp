@@ -59,51 +59,58 @@ final class FadeAnimator: NSObject, UIViewControllerAnimatedTransitioning {
         guard let selectedCell = firstViewController.selectedCell,
               let window = firstViewController.view.window ?? secondViewController.view.window,
               let cellImageSnapshot = selectedCell.imageView.snapshotView(afterScreenUpdates: true),
-              let controllerImageSnapshot = secondViewController.hiddenImageView.snapshotView(afterScreenUpdates: true)
+              let controllerImageSnapshot = secondViewController.hiddenImageView.snapshotView(afterScreenUpdates: true),
+              let descriptionSnapshot = secondViewController.descriptionView.snapshotView(afterScreenUpdates: true)
         else {
             transitionContext.completeTransition(true)
             return
         }
         let isPresenting = type.isPresenting
         
-        let imageViewSnapshot: UIView
-        
-        if isPresenting {
-            imageViewSnapshot = cellImageSnapshot
-        } else {
-            imageViewSnapshot = controllerImageSnapshot
-        }
-
-        imageViewSnapshot.contentMode = .scaleAspectFill
-
         toView.alpha = 0
-        
-        let tempImage = selectedCell.imageView.image
 
+        let tempImage = selectedCell.imageView.image
         if isPresenting {
             firstViewController.selectedCell?.imageView.image = nil
         }
         let firstViewSnapshot = firstViewController.view.snapshotView(afterScreenUpdates: true) ?? UIView()
-
+        
         containerView.addSubview(firstViewSnapshot)
 
-        [imageViewSnapshot].forEach { containerView.addSubview($0) }
+        [selectedCellImageViewSnapshot, controllerImageSnapshot, descriptionSnapshot].forEach { containerView.addSubview($0) }
 
         let controllerImageViewRect = secondViewController.hiddenImageView.convert(secondViewController.hiddenImageView.bounds, to: window)
-
-        [imageViewSnapshot].forEach {
+        let descriptionViewRect = secondViewController.descriptionView.convert(secondViewController.descriptionView.bounds, to: window)
+            
+        descriptionSnapshot.frame = descriptionViewRect
+        [selectedCellImageViewSnapshot, controllerImageSnapshot].forEach {
             $0.frame = isPresenting ? cellImageViewRect : controllerImageViewRect
         }
+        descriptionSnapshot.alpha = isPresenting ? 0 : 1
         
-        UIView.animate(withDuration: Self.duration, animations: {                imageViewSnapshot.frame = isPresenting ? controllerImageViewRect : self.cellImageViewRect
-        }, completion: {_ in
-            
-            imageViewSnapshot.removeFromSuperview()
+        controllerImageSnapshot.alpha = isPresenting ? 0 : 1
+
+        selectedCellImageViewSnapshot.alpha = isPresenting ? 1 : 0
+        
+        UIView.animateKeyframes(withDuration: Self.duration, delay: 0, options: .calculationModeCubic, animations: {
+
+            UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 1) {
+
+                self.selectedCellImageViewSnapshot.frame = isPresenting ? controllerImageViewRect : self.cellImageViewRect
+                controllerImageSnapshot.frame = isPresenting ? controllerImageViewRect : self.cellImageViewRect
+                descriptionSnapshot.alpha = isPresenting ? 1: 0
+            }
+
+            UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.6) {
+                self.selectedCellImageViewSnapshot.alpha = isPresenting ? 0 : 1
+                controllerImageSnapshot.alpha = isPresenting ? 1 : 0
+            }
+        }, completion: { _ in
+            self.selectedCellImageViewSnapshot.removeFromSuperview()
+            controllerImageSnapshot.removeFromSuperview()
             firstViewSnapshot.removeFromSuperview()
+            descriptionSnapshot.removeFromSuperview()
             toView.alpha = 1
-            
-            transitionContext.completeTransition(true)
-            
             if !isPresenting {
                 DispatchQueue.main.async { [weak self] in
                     self?.firstViewController.selectedCell?.imageView.image = tempImage
@@ -111,10 +118,9 @@ final class FadeAnimator: NSObject, UIViewControllerAnimatedTransitioning {
                     self?.firstViewController.itemCollectionView.reloadItems(at: [idx])
                 }
             }
-        })
 
-        
-        
+            transitionContext.completeTransition(true)
+        })
     }
 }
 
