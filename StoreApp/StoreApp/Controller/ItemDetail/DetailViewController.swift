@@ -24,7 +24,7 @@ class DetailViewController: UIViewController {
         fetchDetailModel()
 
         guard let item = detailItem else { return }
-        setImageFromLocalOrNetwork(imageView: hiddenImageView, item: item)
+        hiddenImageView.setImageFromLocalOrNetwork(path: item.image, fileName: item.detailHash)
         let viewModel = DetailViewModel(item: item)
         descriptionView.configure(viewModel: viewModel)
         
@@ -45,7 +45,7 @@ class DetailViewController: UIViewController {
     private func configure(model: DetailStoreItem) {
 
         DispatchQueue.global().async {
-            let images = model.data.thumbImages.compactMap { getImageByString(name: $0) }
+            let images = model.data.thumbImages.compactMap { $0.toURL()?.toUIImage() }
             
             DispatchQueue.main.async {
                 guard let hiddenImage = self.hiddenImageView.image else { return }
@@ -57,7 +57,7 @@ class DetailViewController: UIViewController {
         }
         
         DispatchQueue.global().async {
-            let images = model.data.detailSection.compactMap{ getImageByString(name: $0) }
+            let images = model.data.detailSection.compactMap{ $0.toURL()?.toUIImage() }
             
             DispatchQueue.main.async { [weak self] in
                 
