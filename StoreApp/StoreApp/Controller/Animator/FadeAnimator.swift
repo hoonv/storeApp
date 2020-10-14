@@ -10,13 +10,11 @@ import UIKit
 final class FadeAnimator: NSObject, UIViewControllerAnimatedTransitioning {
 
     static let duration: TimeInterval = 0.5
-
     private let type: PresentationType
     private let firstViewController: ItemListViewController
     private let secondViewController: DetailViewController
     private var selectedCellImageViewSnapshot: UIView
     private let cellImageViewRect: CGRect
-
 
     init?(type: PresentationType,
           firstViewController: ItemListViewController,
