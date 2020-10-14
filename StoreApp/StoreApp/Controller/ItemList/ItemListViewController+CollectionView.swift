@@ -73,7 +73,7 @@ extension ItemListViewController: UICollectionViewDelegate, UICollectionViewData
         
         let item = itemViewModel.items[indexPath.section][indexPath.item]
         cell.configure(with: item, badges: itemViewModel.badges, colors: badgeColors)
-        setImageLocalOrNetwork(imageView: cell.imageView, item: item)
+        setImageFromLocalOrNetwork(imageView: cell.imageView, item: item)
         return cell
     }
     
