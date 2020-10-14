@@ -175,10 +175,10 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="esd-gh-Z6I" customClass="DetailDescriptionView" customModule="StoreApp" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="300" width="414" height="300"/>
+                                                <rect key="frame" x="0.0" y="300" width="414" height="280"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="300" id="iUq-SV-bfh"/>
+                                                    <constraint firstAttribute="height" constant="280" id="iUq-SV-bfh"/>
                                                 </constraints>
                                             </view>
                                             <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="bfk-io-Qmd">
@@ -228,13 +228,23 @@
                                     <action selector="closeTouched:" destination="w80-Zc-lt7" eventType="touchUpInside" id="mqM-Ah-utt"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PR9-Vw-Hby" userLabel="footer" customClass="DetailFooterView" customModule="StoreApp" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="676" width="414" height="60"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="Plh-Q4-o6D"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="55M-3k-mnc"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="PR9-Vw-Hby" firstAttribute="leading" secondItem="55M-3k-mnc" secondAttribute="leading" id="0Wn-B9-ebE"/>
                             <constraint firstItem="Jky-hd-09u" firstAttribute="top" secondItem="55M-3k-mnc" secondAttribute="top" constant="10" id="1zs-NF-6GQ"/>
+                            <constraint firstItem="55M-3k-mnc" firstAttribute="trailing" secondItem="PR9-Vw-Hby" secondAttribute="trailing" id="9cd-3v-Bl0"/>
                             <constraint firstItem="4N9-eQ-6BX" firstAttribute="bottom" secondItem="55M-3k-mnc" secondAttribute="bottom" id="XnX-9c-dk6"/>
                             <constraint firstItem="4N9-eQ-6BX" firstAttribute="trailing" secondItem="55M-3k-mnc" secondAttribute="trailing" id="g6H-Xq-kZe"/>
+                            <constraint firstItem="55M-3k-mnc" firstAttribute="bottom" secondItem="PR9-Vw-Hby" secondAttribute="bottom" id="gWf-Nr-1TM"/>
                             <constraint firstItem="Jky-hd-09u" firstAttribute="leading" secondItem="55M-3k-mnc" secondAttribute="leading" constant="20" id="l1t-6v-jjV"/>
                             <constraint firstItem="4N9-eQ-6BX" firstAttribute="top" secondItem="55M-3k-mnc" secondAttribute="top" id="qj4-ZS-QW9"/>
                             <constraint firstItem="4N9-eQ-6BX" firstAttribute="leading" secondItem="55M-3k-mnc" secondAttribute="leading" id="v89-yE-erb"/>
