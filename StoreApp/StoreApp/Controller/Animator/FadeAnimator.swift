@@ -9,7 +9,6 @@ import UIKit
 
 final class FadeAnimator: NSObject, UIViewControllerAnimatedTransitioning {
 
-
     static let duration: TimeInterval = 0.5
 
     private let type: PresentationType
@@ -65,11 +64,11 @@ final class FadeAnimator: NSObject, UIViewControllerAnimatedTransitioning {
         
         let tempImage = selectedCell.imageView.image
         let isPresenting = type.isPresenting
-        let firstViewSnapshot = firstViewController.view.snapshotView(afterScreenUpdates: true) ?? UIView()
         let backgroundView = UIView()
         if isPresenting {
             firstViewController.selectedCell?.imageView.image = nil
         }
+        let firstViewSnapshot = firstViewController.view.snapshotView(afterScreenUpdates: true) ?? UIView()
         let controllerImageViewRect = secondViewController.hiddenImageView.convert(secondViewController.hiddenImageView.bounds, to: window)
         let descriptionViewRect = secondViewController.descriptionView.convert(secondViewController.descriptionView.bounds, to: window)
         var backgoundViewRect = descriptionViewRect

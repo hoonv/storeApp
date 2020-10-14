@@ -13,12 +13,10 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var hiddenImageView: UIImageView!
     @IBOutlet weak var imageScrollView: ImageScrollView!
     @IBOutlet weak var closeButton: UIButton!
-    
     @IBOutlet weak var descriptionView: DetailDescriptionView!
-    
     @IBOutlet weak var contentView: UIView!
-    
     @IBOutlet weak var detailSectionStackView: UIStackView!
+    
     var detailItem: StoreItem?
 
     override func viewDidLoad() {
@@ -73,9 +71,7 @@ class DetailViewController: UIViewController {
                     imageView.heightAnchor.constraint(equalTo: imageView.widthAnchor, multiplier: 1).isActive = true
                 }
             }
-
         }
-        
     }
     
     @IBAction func closeTouched(_ sender: Any) {
