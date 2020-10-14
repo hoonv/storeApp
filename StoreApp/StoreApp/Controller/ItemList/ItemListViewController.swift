@@ -10,8 +10,6 @@ import NetworkHelper
 
 class ItemListViewController: UIViewController {
 
-    let cellReuseIdentifier = "ItemCollectionViewCell"
-    let headerReuseIdentifier = "CollectionHeaderView"
     let badgeColors = [#colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1),
                        #colorLiteral(red: 0.1764705926, green: 0.4980392158, blue: 0.7568627596, alpha: 1),
                        #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)]
@@ -49,7 +47,6 @@ class ItemListViewController: UIViewController {
     func presentItemDetailViewController(with detailItem: StoreItem) {
         guard let detailViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "DetailViewController") as? DetailViewController else { return }
 
-        // 4
         detailViewController.transitioningDelegate = self
 
         detailViewController.modalPresentationStyle = .fullScreen
@@ -58,12 +55,22 @@ class ItemListViewController: UIViewController {
     }
     
     private func setupCollectionView() {
-        itemCollectionView.register(UINib(nibName: "ItemCollectionViewCell", bundle: nil),
-                                    forCellWithReuseIdentifier: cellReuseIdentifier)
-        itemCollectionView.register(UINib(nibName: "CollectionHeaderView",bundle: nil),
+        itemCollectionView.register(UINib(nibName: Constant.cellNibName, bundle: nil),
+                                    forCellWithReuseIdentifier: Constant.cellReuseIdentifier)
+        itemCollectionView.register(UINib(nibName: Constant.headerNibName,bundle: nil),
                                     forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
-                                    withReuseIdentifier: headerReuseIdentifier)
+                                    withReuseIdentifier: Constant.headerReuseIdentifier)
         let layout = itemCollectionView.collectionViewLayout as? UICollectionViewFlowLayout
         layout?.sectionHeadersPinToVisibleBounds = true
+    }
+}
+
+extension ItemListViewController {
+    
+    enum Constant {
+        static let cellNibName = "ItemCollectionViewCell"
+        static let headerNibName = "CollectionHeaderView"
+        static let cellReuseIdentifier = "ItemCollectionViewCell"
+        static let headerReuseIdentifier = "CollectionHeaderView"
     }
 }

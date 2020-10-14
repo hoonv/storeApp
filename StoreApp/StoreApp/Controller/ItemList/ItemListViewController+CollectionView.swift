@@ -51,7 +51,7 @@ extension ItemListViewController: UICollectionViewDelegate, UICollectionViewData
         
         if kind.isEqual(UICollectionView.elementKindSectionHeader) {
             guard let cell = collectionView.dequeueReusableSupplementaryView(ofKind: kind,
-                                                                             withReuseIdentifier: headerReuseIdentifier,
+                                                                             withReuseIdentifier: Constant.headerReuseIdentifier,
                                                                              for: indexPath)
                     as? CollectionHeaderView else { return UICollectionReusableView() }
             
@@ -68,12 +68,12 @@ extension ItemListViewController: UICollectionViewDelegate, UICollectionViewData
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellReuseIdentifier, for: indexPath)
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constant.cellReuseIdentifier, for: indexPath)
                 as? ItemCollectionViewCell else { return UICollectionViewCell() }
         
         let item = itemViewModel.items[indexPath.section][indexPath.item]
         cell.configure(with: item, badges: itemViewModel.badges, colors: badgeColors)
-        setImageFromLocalOrNetwork(imageView: cell.imageView, item: item)
+        cell.imageView.setImageFromLocalOrNetwork(path: item.image, fileName: item.detailHash)
         return cell
     }
     
