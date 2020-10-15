@@ -8,6 +8,11 @@
 import UIKit
 import NetworkHelper
 
+protocol DetailViewDelegate: class {
+    
+    func detailView(_ detailView: DetailViewController, didAddToBasket item: StoreItem)
+}
+
 class DetailViewController: UIViewController {
 
     @IBOutlet weak var hiddenImageView: UIImageView!
@@ -18,34 +23,90 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var detailSectionStackView: UIStackView!
     @IBOutlet weak var footerView: DetailFooterView!
     @IBOutlet weak var popUpView: PopUpView!
-    var detailItem: StoreItem?
-
+    
+    weak var delegate: DetailViewDelegate?
+    let viewModel = DetailViewModel()
+    var animationImage: UIImage?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        fetchDetailModel()
-        footerView.basketButton.addTarget(self, action: #selector(basketOnTouch), for: .touchDown)
-        popUpView.moveTobasketButton.addTarget(self, action: #selector(moveToBasketOnTouch), for: .touchDown)
-        guard let item = detailItem else { return }
-        hiddenImageView.setImageFromLocalOrNetwork(path: item.image, fileName: item.detailHash)
-        let viewModel = DetailViewModel(item: item)
-        descriptionView.configure(viewModel: viewModel)
+        hiddenImageView.image = animationImage
+        setupButtonTarget()
+        setupBindings()
+        viewModel.load()
+        viewModel.request()
     }
     
-    func presentItemDetailViewController() {
-        guard let itemBasketVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ItemBasketViewController") as? ItemBasketViewController else { return }
+    private func setupBindings() {
+        viewModel.storeItem = { [weak self] (item: StoreItem, percent: String?) -> Void in
+            DispatchQueue.main.async {
+                self?.descriptionView.configure (storeItem: item, percent: percent)
+            }
+        }
+        
+        viewModel.detailStoreItem = { [weak self] (item: DetailStoreItem) -> Void in
+            DispatchQueue.main.async {
+                self?.descriptionView.configure(itemDetail: item)
+            }
+        }
+        
+        viewModel.thumbImages = {(images: [String]) -> Void in
+            DispatchQueue.global().async {
+                let uiImages = images.compactMap { $0.toURL()?.toUIImage() }
+                
+                DispatchQueue.main.async { [weak self] in
+                    guard let hiddenImage = self?.hiddenImageView.image else { return }
+                    self?.imageScrollView.configure(images: [hiddenImage] + uiImages)
+                }
+            }
+        }
+        
+        viewModel.detailSection = { (images: [String]) -> Void in
+            DispatchQueue.global().async {
+                let uiImages = images.compactMap{ $0.toURL()?.toUIImage() }
+                DispatchQueue.main.async { [weak self] in
+                    for image in uiImages {
+                        let imageView = UIImageView()
+                        imageView.image = image
+                        imageView.contentMode = .scaleAspectFit
+                        self?.detailSectionStackView.addArrangedSubview(imageView)
+                        imageView.translatesAutoresizingMaskIntoConstraints = false
+                        imageView.heightAnchor.constraint(equalTo: imageView.widthAnchor, multiplier: image.size.height / image.size.width).isActive = true
+                    }
+                }
+            }
+        }
+    }
+    
+    private func setupButtonTarget() {
+        popUpView.moveTobasketButton.addTarget(self,
+                                               action: #selector(moveToBasketOnTouch),
+                                               for: .touchDown)
+        footerView.orderButton.addTarget(self,
+                                         action: #selector(order),
+                                         for: .touchDown )
+        footerView.basketButton.addTarget(self,
+                                          action: #selector(basketOnTouch),
+                                          for: .touchDown)
+    }
 
-        present(itemBasketVC, animated: true)
+    @objc func order() {
+        viewModel.post() { [weak self] in
+            self?.present(defaultAlert(title: "주문이 완료되었습니다"), animated: true)
+        }
     }
-    
     
     @objc func moveToBasketOnTouch() {
         presentItemDetailViewController()
     }
     
     @objc func basketOnTouch() {
+        guard let item = viewModel.item else { return }
         if !popUpView.isHidden {
             return
         }
+        delegate?.detailView(self, didAddToBasket: item)
+        basketAnimation()
         popUpView.isHidden = false
         DispatchQueue.global().async {
             sleep(2)
@@ -55,58 +116,7 @@ class DetailViewController: UIViewController {
         }
     }
     
-    private func fetchDetailModel() {
-        guard let item = detailItem else { return }
-        NetworkLayer.shared.dataTask(from: "\(Constant.detailURL)\(item.detailHash)") {
-            (result: Result<DetailStoreItem,APIError>) in
-            switch result {
-            case .success(let model):
-                self.configure(model: model)
-            case .failure(let error):
-                print(error)
-            }
-        }
-    }
-    
-    private func configure(model: DetailStoreItem) {
-
-        DispatchQueue.global().async {
-            let images = model.data.thumbImages.compactMap { $0.toURL()?.toUIImage() }
-            
-            DispatchQueue.main.async { [weak self] in
-                guard let hiddenImage = self?.hiddenImageView.image else { return }
-                self?.imageScrollView.configure(images: [hiddenImage] + images)
-            }
-        }
-        
-        DispatchQueue.main.async { [weak self] in
-            self?.descriptionView.configure(storeItem: model)
-        }
-        
-        DispatchQueue.global().async {
-            let images = model.data.detailSection.compactMap{ $0.toURL()?.toUIImage() }
-            
-            DispatchQueue.main.async { [weak self] in
-                for image in images {
-                    let imageView = UIImageView()
-                    imageView.image = image
-                    imageView.contentMode = .scaleAspectFit
-                    self?.detailSectionStackView.addArrangedSubview(imageView)
-                    imageView.translatesAutoresizingMaskIntoConstraints = false
-                    imageView.heightAnchor.constraint(equalTo: imageView.widthAnchor, multiplier: 1).isActive = true
-                }
-            }
-        }
-    }
-
     @IBAction func closeTouched(_ sender: Any) {
         dismiss(animated: true, completion: nil)
-    }
-}
-
-extension DetailViewController {
-    
-    enum Constant {
-        static let detailURL = "https://h3rb9c0ugl.execute-api.ap-northeast-2.amazonaws.com/develop/baminchan/detail/"
     }
 }
