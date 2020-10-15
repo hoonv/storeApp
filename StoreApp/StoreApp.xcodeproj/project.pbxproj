@@ -34,6 +34,10 @@
 		E04AFA482521BF6C009E9F9A /* VerifyTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E04AFA472521BF6C009E9F9A /* VerifyTextView.swift */; };
 		E07DA5D3252D676F00F3497B /* VerifyTextViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07DA5D2252D676F00F3497B /* VerifyTextViewModel.swift */; };
 		E08B29362538022500AF25AD /* PopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08B29352538022500AF25AD /* PopUpView.swift */; };
+		E08B293C25380EDA00AF25AD /* ItemBasket.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08B293B25380EDA00AF25AD /* ItemBasket.swift */; };
+		E08B294225381D6200AF25AD /* ItemBasketViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08B294125381D6200AF25AD /* ItemBasketViewModel.swift */; };
+		E08B294925382E6300AF25AD /* ItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08B294725382E6300AF25AD /* ItemTableViewCell.swift */; };
+		E08B294A25382E6300AF25AD /* ItemTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E08B294825382E6300AF25AD /* ItemTableViewCell.xib */; };
 		E098887925370273004E5B11 /* DetailFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E098887825370273004E5B11 /* DetailFooterView.swift */; };
 		E098888325372D49004E5B11 /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E098888225372D49004E5B11 /* UIImageExtension.swift */; };
 		E098888E25374C18004E5B11 /* ItemBasketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E098888D25374C18004E5B11 /* ItemBasketViewController.swift */; };
@@ -151,6 +155,10 @@
 		E07DA5BE252D3E9500F3497B /* RxSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = RxSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E07DA5D2252D676F00F3497B /* VerifyTextViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyTextViewModel.swift; sourceTree = "<group>"; };
 		E08B29352538022500AF25AD /* PopUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpView.swift; sourceTree = "<group>"; };
+		E08B293B25380EDA00AF25AD /* ItemBasket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemBasket.swift; sourceTree = "<group>"; };
+		E08B294125381D6200AF25AD /* ItemBasketViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemBasketViewModel.swift; sourceTree = "<group>"; };
+		E08B294725382E6300AF25AD /* ItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTableViewCell.swift; sourceTree = "<group>"; };
+		E08B294825382E6300AF25AD /* ItemTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemTableViewCell.xib; sourceTree = "<group>"; };
 		E098887825370273004E5B11 /* DetailFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailFooterView.swift; sourceTree = "<group>"; };
 		E098888225372D49004E5B11 /* UIImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
 		E098888D25374C18004E5B11 /* ItemBasketViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemBasketViewController.swift; sourceTree = "<group>"; };
@@ -322,6 +330,7 @@
 				E0C6D86E252979EA00A834E2 /* Validator.swift */,
 				E0172CB7252B16EB00A91671 /* User.swift */,
 				E0172CE4252C52B700A91671 /* StoreItemLoader.swift */,
+				E08B293B25380EDA00AF25AD /* ItemBasket.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -353,6 +362,8 @@
 				E045B0432535F24000CDB74B /* DetailDescriptionView.swift */,
 				E098887825370273004E5B11 /* DetailFooterView.swift */,
 				E08B29352538022500AF25AD /* PopUpView.swift */,
+				E08B294725382E6300AF25AD /* ItemTableViewCell.swift */,
+				E08B294825382E6300AF25AD /* ItemTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -365,6 +376,7 @@
 				E0D0EBDA252DE10400116CFF /* SignUpViewModel.swift */,
 				E045B03D2535E93400CDB74B /* DetailStoreItemViewModel.swift */,
 				E0172CA1252B0E7100A91671 /* VerifyTextViewDataSource.swift */,
+				E08B294125381D6200AF25AD /* ItemBasketViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -622,6 +634,7 @@
 				E0D0EBB9252D89BC00116CFF /* main.json in Resources */,
 				E0172D09252C96EF00A91671 /* CollectionHeaderView.xib in Resources */,
 				E04AFA1E2521918B009E9F9A /* LaunchScreen.storyboard in Resources */,
+				E08B294A25382E6300AF25AD /* ItemTableViewCell.xib in Resources */,
 				E04AFA1B2521918B009E9F9A /* Assets.xcassets in Resources */,
 				E0D0EBBA252D89BC00116CFF /* side.json in Resources */,
 				E0172D02252C80A400A91671 /* ItemCollectionViewCell.xib in Resources */,
@@ -715,6 +728,7 @@
 				E04AFA162521918A009E9F9A /* SignUpViewController.swift in Sources */,
 				E04AFA122521918A009E9F9A /* AppDelegate.swift in Sources */,
 				E045B0442535F24000CDB74B /* DetailDescriptionView.swift in Sources */,
+				E08B293C25380EDA00AF25AD /* ItemBasket.swift in Sources */,
 				E0172D01252C80A400A91671 /* ItemCollectionViewCell.swift in Sources */,
 				E0172CA2252B0E7100A91671 /* VerifyTextViewDataSource.swift in Sources */,
 				E0172D08252C96EF00A91671 /* CollectionHeaderView.swift in Sources */,
@@ -724,6 +738,7 @@
 				E0B6D05025345C61001B9EB5 /* StoreItemResponse.swift in Sources */,
 				E0172CBD252B25A200A91671 /* ItemListViewController.swift in Sources */,
 				E0172CB8252B16EB00A91671 /* User.swift in Sources */,
+				E08B294925382E6300AF25AD /* ItemTableViewCell.swift in Sources */,
 				E0D0EBD1252DAE1B00116CFF /* StringExtension.swift in Sources */,
 				E0D0EBC9252D8E9800116CFF /* StoreItems.swift in Sources */,
 				E0B8C2E8253498B500E77874 /* DetailStoreItem.swift in Sources */,
@@ -734,6 +749,7 @@
 				E0172CE5252C52B700A91671 /* StoreItemLoader.swift in Sources */,
 				E0172CD6252C4B6200A91671 /* StoreItem.swift in Sources */,
 				E0B6D00E253359CA001B9EB5 /* ItemListViewController+TransitioningDelegate.swift in Sources */,
+				E08B294225381D6200AF25AD /* ItemBasketViewModel.swift in Sources */,
 				E0D0EBD6252DB85600116CFF /* BadgeLabel.swift in Sources */,
 				E07DA5D3252D676F00F3497B /* VerifyTextViewModel.swift in Sources */,
 				E0D0EBDB252DE10400116CFF /* SignUpViewModel.swift in Sources */,
