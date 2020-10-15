@@ -48,8 +48,6 @@ class ItemListViewController: UIViewController {
         guard let detailViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "DetailViewController") as? DetailViewController else { return }
 
         detailViewController.transitioningDelegate = self
-
-        detailViewController.modalPresentationStyle = .fullScreen
         detailViewController.detailItem = detailItem
         present(detailViewController, animated: true)
     }
