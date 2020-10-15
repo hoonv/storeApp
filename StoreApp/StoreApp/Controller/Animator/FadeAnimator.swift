@@ -12,7 +12,7 @@ final class FadeAnimator: NSObject, UIViewControllerAnimatedTransitioning {
     static let duration: TimeInterval = 0.5
     private let type: PresentationType
     private let firstViewController: ItemListViewController
-    private let secondViewController: DetailViewController
+    private var secondViewController: DetailViewController?
     private var selectedCellImageViewSnapshot: UIView
     private let cellImageViewRect: CGRect
 
@@ -42,7 +42,11 @@ final class FadeAnimator: NSObject, UIViewControllerAnimatedTransitioning {
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
     
         let containerView = transitionContext.containerView
-
+        guard let secondViewController = secondViewController else {
+            transitionContext.completeTransition(false)
+            return
+        }
+        
         guard let toView = secondViewController.view else {
             transitionContext.completeTransition(false)
             return
@@ -122,6 +126,7 @@ final class FadeAnimator: NSObject, UIViewControllerAnimatedTransitioning {
                     self?.firstViewController.itemCollectionView.reloadItems(at: [idx])
                 }
             }
+            self.secondViewController = nil
             transitionContext.completeTransition(true)
         })
     }
