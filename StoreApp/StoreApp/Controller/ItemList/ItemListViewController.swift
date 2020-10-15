@@ -10,6 +10,8 @@ import NetworkHelper
 
 class ItemListViewController: UIViewController {
 
+    @IBOutlet weak var itemCollectionView: UICollectionView!
+
     let badgeColors = [#colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1),
                        #colorLiteral(red: 0.1764705926, green: 0.4980392158, blue: 0.7568627596, alpha: 1),
                        #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)]
@@ -18,8 +20,7 @@ class ItemListViewController: UIViewController {
     var animator: FadeAnimator?
     var selectedCell: ItemCollectionViewCell?
     var selectedImageSnapShot: UIView?
-    
-    @IBOutlet weak var itemCollectionView: UICollectionView!
+    let basket = ItemBasket.shared
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,6 +50,7 @@ class ItemListViewController: UIViewController {
 
         detailViewController.transitioningDelegate = self
         detailViewController.detailItem = detailItem
+        detailViewController.delegate = self
         present(detailViewController, animated: true)
     }
     
@@ -72,3 +74,10 @@ extension ItemListViewController {
         static let headerReuseIdentifier = "CollectionHeaderView"
     }
 }
+
+extension ItemListViewController: DetailViewDelegate {
+    func detailView(_ detailView: DetailViewController, didAddToBasket item: StoreItem) {
+        basket.append(element: item)
+    }
+}
+ 
