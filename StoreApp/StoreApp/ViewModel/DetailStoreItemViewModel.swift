@@ -27,15 +27,25 @@ class DetailViewModel {
     
     
     private func calculateSalePercent(prev: String, curr: String) -> String? {
-        let currPrice = curr.replacingOccurrences(of: "원", with: "")
-                            .replacingOccurrences(of: ",", with: "")
-        let prevPrice = prev.replacingOccurrences(of: ",", with: "")
+        guard
+            let currPrice = curr.priceToInt(),
+            let prevPrice = prev.priceToInt() else { return nil }
         
-        guard let currNum = Double(currPrice), let prevNum = Double(prevPrice) else { return nil }
+        let currNum = Double(currPrice)
+        let prevNum = Double(prevPrice)
 
         let percent = Int((prevNum - currNum) / prevNum * 100)
         
         return "\(percent)%"
     }
     
+}
+
+extension String {
+    func priceToInt() -> Int? {
+        let price = self.replacingOccurrences(of: "원", with: "")
+                        .replacingOccurrences(of: ",", with: "")
+        
+        return Int(price) ?? nil
+    }
 }
