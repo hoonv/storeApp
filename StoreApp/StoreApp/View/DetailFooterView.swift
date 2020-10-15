@@ -9,6 +9,9 @@ import UIKit
 
 class DetailFooterView: UIView {
 
+    let buyButton = UIButton()
+    let basketButton = UIButton()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
@@ -24,7 +27,6 @@ class DetailFooterView: UIView {
 
         self.backgroundColor = .secondarySystemBackground
         self.addBorder(toEdges: [.top], color: UIColor.systemGray, thickness: 1)
-        let buyButton = UIButton()
         buyButton.backgroundColor = .systemOrange
         buyButton.translatesAutoresizingMaskIntoConstraints = false
         buyButton.setTitle("구매하기", for: .normal)
@@ -32,7 +34,6 @@ class DetailFooterView: UIView {
         buyButton.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .bold)
         addSubview(buyButton)
         
-        let basketButton = UIButton()
         basketButton.backgroundColor = .white
         basketButton.translatesAutoresizingMaskIntoConstraints = false
         basketButton.setImage(UIImage.init(systemName: "cart"), for: .normal)
@@ -50,7 +51,6 @@ class DetailFooterView: UIView {
             basketButton.widthAnchor.constraint(equalTo: basketButton.heightAnchor),
             basketButton.topAnchor.constraint(equalTo: topAnchor, constant: 10),
             basketButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10),
-
         ])
     }
 }
