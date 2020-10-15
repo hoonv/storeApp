@@ -181,7 +181,7 @@
                                                     <constraint firstAttribute="height" constant="280" id="iUq-SV-bfh"/>
                                                 </constraints>
                                             </view>
-                                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="bfk-io-Qmd">
+                                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="bfk-io-Qmd">
                                                 <rect key="frame" x="0.0" y="575" width="414" height="132"/>
                                             </stackView>
                                         </subviews>
@@ -213,15 +213,22 @@
                                 <viewLayoutGuide key="contentLayoutGuide" id="DzJ-aX-bmf"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="wYw-A0-Lf9"/>
                             </scrollView>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Br8-cc-7MC" userLabel="popUpView" customClass="PopUpView" customModule="StoreApp" customModuleProvider="target">
+                                <rect key="frame" x="10" y="616" width="394" height="50"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="bHS-fv-sRy"/>
+                                </constraints>
+                            </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jky-hd-09u">
-                                <rect key="frame" x="20" y="12.666666666666664" width="25" height="20"/>
+                                <rect key="frame" x="20" y="12.999999999999998" width="25" height="19.333333333333329"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="25" id="Se5-uu-iiA"/>
                                     <constraint firstAttribute="height" constant="25" id="p1K-sG-gle"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" backgroundImage="xmark" catalog="system">
+                                <state key="normal" backgroundImage="arrow.backward" catalog="system">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
@@ -242,11 +249,14 @@
                             <constraint firstItem="PR9-Vw-Hby" firstAttribute="leading" secondItem="55M-3k-mnc" secondAttribute="leading" id="0Wn-B9-ebE"/>
                             <constraint firstItem="Jky-hd-09u" firstAttribute="top" secondItem="55M-3k-mnc" secondAttribute="top" constant="10" id="1zs-NF-6GQ"/>
                             <constraint firstItem="55M-3k-mnc" firstAttribute="trailing" secondItem="PR9-Vw-Hby" secondAttribute="trailing" id="9cd-3v-Bl0"/>
+                            <constraint firstItem="55M-3k-mnc" firstAttribute="trailing" secondItem="Br8-cc-7MC" secondAttribute="trailing" constant="10" id="Tpg-PD-ffM"/>
                             <constraint firstItem="4N9-eQ-6BX" firstAttribute="bottom" secondItem="55M-3k-mnc" secondAttribute="bottom" id="XnX-9c-dk6"/>
+                            <constraint firstItem="Br8-cc-7MC" firstAttribute="leading" secondItem="55M-3k-mnc" secondAttribute="leading" constant="10" id="YlQ-mK-dfG"/>
                             <constraint firstItem="4N9-eQ-6BX" firstAttribute="trailing" secondItem="55M-3k-mnc" secondAttribute="trailing" id="g6H-Xq-kZe"/>
                             <constraint firstItem="55M-3k-mnc" firstAttribute="bottom" secondItem="PR9-Vw-Hby" secondAttribute="bottom" id="gWf-Nr-1TM"/>
                             <constraint firstItem="Jky-hd-09u" firstAttribute="leading" secondItem="55M-3k-mnc" secondAttribute="leading" constant="20" id="l1t-6v-jjV"/>
                             <constraint firstItem="4N9-eQ-6BX" firstAttribute="top" secondItem="55M-3k-mnc" secondAttribute="top" id="qj4-ZS-QW9"/>
+                            <constraint firstItem="PR9-Vw-Hby" firstAttribute="top" secondItem="Br8-cc-7MC" secondAttribute="bottom" constant="10" id="s5D-0s-TKJ"/>
                             <constraint firstItem="4N9-eQ-6BX" firstAttribute="leading" secondItem="55M-3k-mnc" secondAttribute="leading" id="v89-yE-erb"/>
                         </constraints>
                     </view>
@@ -255,17 +265,34 @@
                         <outlet property="contentView" destination="MFe-rL-llK" id="jGP-eF-Ofk"/>
                         <outlet property="descriptionView" destination="esd-gh-Z6I" id="6xt-Kf-Vmm"/>
                         <outlet property="detailSectionStackView" destination="bfk-io-Qmd" id="ezO-d0-Zf5"/>
+                        <outlet property="footerView" destination="PR9-Vw-Hby" id="aCc-x0-TBe"/>
                         <outlet property="hiddenImageView" destination="rmh-zS-QRR" id="pj9-Sb-xKP"/>
                         <outlet property="imageScrollView" destination="8VO-4V-LSU" id="I70-ey-50j"/>
+                        <outlet property="popUpView" destination="Br8-cc-7MC" id="z95-xC-LOz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GIA-WC-GlF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1782.608695652174" y="136.95652173913044"/>
         </scene>
+        <!--Item Basket View Controller-->
+        <scene sceneID="ZE7-aX-GNb">
+            <objects>
+                <viewController id="fcr-Lb-6gw" customClass="ItemBasketViewController" customModule="StoreApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="3FH-DA-bkk">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="1Ft-lg-JYX"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fTq-NY-jb3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2513" y="137"/>
+        </scene>
     </scenes>
     <resources>
-        <image name="xmark" catalog="system" width="128" height="113"/>
+        <image name="arrow.backward" catalog="system" width="128" height="98"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

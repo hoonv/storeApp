@@ -33,8 +33,10 @@
 		E04AFA342521918B009E9F9A /* StoreAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E04AFA332521918B009E9F9A /* StoreAppUITests.swift */; };
 		E04AFA482521BF6C009E9F9A /* VerifyTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E04AFA472521BF6C009E9F9A /* VerifyTextView.swift */; };
 		E07DA5D3252D676F00F3497B /* VerifyTextViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07DA5D2252D676F00F3497B /* VerifyTextViewModel.swift */; };
+		E08B29362538022500AF25AD /* PopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08B29352538022500AF25AD /* PopUpView.swift */; };
 		E098887925370273004E5B11 /* DetailFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E098887825370273004E5B11 /* DetailFooterView.swift */; };
 		E098888325372D49004E5B11 /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E098888225372D49004E5B11 /* UIImageExtension.swift */; };
+		E098888E25374C18004E5B11 /* ItemBasketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E098888D25374C18004E5B11 /* ItemBasketViewController.swift */; };
 		E0B6CFF82532F67B001B9EB5 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0B6CFF72532F67B001B9EB5 /* DetailViewController.swift */; };
 		E0B6D000253358E4001B9EB5 /* SignUpViewController+TransitioningDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0B6CFFF253358E4001B9EB5 /* SignUpViewController+TransitioningDelegate.swift */; };
 		E0B6D0092533599A001B9EB5 /* ItemListViewController+CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0B6D0082533599A001B9EB5 /* ItemListViewController+CollectionView.swift */; };
@@ -148,8 +150,10 @@
 		E07DA5AE252D3DFB00F3497B /* RxSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = RxSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E07DA5BE252D3E9500F3497B /* RxSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = RxSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E07DA5D2252D676F00F3497B /* VerifyTextViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyTextViewModel.swift; sourceTree = "<group>"; };
+		E08B29352538022500AF25AD /* PopUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpView.swift; sourceTree = "<group>"; };
 		E098887825370273004E5B11 /* DetailFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailFooterView.swift; sourceTree = "<group>"; };
 		E098888225372D49004E5B11 /* UIImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
+		E098888D25374C18004E5B11 /* ItemBasketViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemBasketViewController.swift; sourceTree = "<group>"; };
 		E0B6CFF72532F67B001B9EB5 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		E0B6CFFF253358E4001B9EB5 /* SignUpViewController+TransitioningDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SignUpViewController+TransitioningDelegate.swift"; sourceTree = "<group>"; };
 		E0B6D0082533599A001B9EB5 /* ItemListViewController+CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ItemListViewController+CollectionView.swift"; sourceTree = "<group>"; };
@@ -329,6 +333,7 @@
 				E0B6CFFE253358B6001B9EB5 /* SignUp */,
 				E0B6D0072533593C001B9EB5 /* ItemList */,
 				E0B6D012253359E4001B9EB5 /* ItemDetail */,
+				E098888C25374BD4004E5B11 /* ItemBasket */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -347,6 +352,7 @@
 				E0B8C2ED253570A900E77874 /* ImageScrollView.swift */,
 				E045B0432535F24000CDB74B /* DetailDescriptionView.swift */,
 				E098887825370273004E5B11 /* DetailFooterView.swift */,
+				E08B29352538022500AF25AD /* PopUpView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -361,6 +367,14 @@
 				E0172CA1252B0E7100A91671 /* VerifyTextViewDataSource.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		E098888C25374BD4004E5B11 /* ItemBasket */ = {
+			isa = PBXGroup;
+			children = (
+				E098888D25374C18004E5B11 /* ItemBasketViewController.swift */,
+			);
+			path = ItemBasket;
 			sourceTree = "<group>";
 		};
 		E0B6CFFE253358B6001B9EB5 /* SignUp */ = {
@@ -713,6 +727,7 @@
 				E0D0EBD1252DAE1B00116CFF /* StringExtension.swift in Sources */,
 				E0D0EBC9252D8E9800116CFF /* StoreItems.swift in Sources */,
 				E0B8C2E8253498B500E77874 /* DetailStoreItem.swift in Sources */,
+				E08B29362538022500AF25AD /* PopUpView.swift in Sources */,
 				E0172CB3252B0F3500A91671 /* Notification.swift in Sources */,
 				E098888325372D49004E5B11 /* UIImageExtension.swift in Sources */,
 				E04AFA142521918A009E9F9A /* SceneDelegate.swift in Sources */,
@@ -722,6 +737,7 @@
 				E0D0EBD6252DB85600116CFF /* BadgeLabel.swift in Sources */,
 				E07DA5D3252D676F00F3497B /* VerifyTextViewModel.swift in Sources */,
 				E0D0EBDB252DE10400116CFF /* SignUpViewModel.swift in Sources */,
+				E098888E25374C18004E5B11 /* ItemBasketViewController.swift in Sources */,
 				E098887925370273004E5B11 /* DetailFooterView.swift in Sources */,
 				E0B8C2EE253570A900E77874 /* ImageScrollView.swift in Sources */,
 				E0172CC8252C284F00A91671 /* SlideInAnimator.swift in Sources */,
