@@ -48,7 +48,7 @@ class ItemBasketViewModel {
         let data = ["text" : orderSheet()]
         do {
             let jsonData = try JSONSerialization.data(withJSONObject: data)
-//            NetworkLayer.shared.postData(url: url, data: jsonData)
+            NetworkLayer.shared.postData(url: url, data: jsonData)
             completion()
         } catch {
             print("error")
