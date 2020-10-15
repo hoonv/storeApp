@@ -10,11 +10,6 @@ import Foundation
 class ItemBasket {
     
     static var shared = ItemBasket()
-    
-    private init() {
-        
-    }
-    
     var items: [StoreItem: Int] = [:]
     var totalPrice: Int {
         get { items.map { (item, count) in
@@ -22,11 +17,17 @@ class ItemBasket {
         }
     }
     
+    private init() {
+        
+    }
+
     public func append(element: StoreItem) {
         items[element, default: 0] += 1
+        NotificationCenter.default.post(name: .ItemBasketDidChanged, object: nil)
     }
     
     public func clear() {
         items.removeAll()
+        NotificationCenter.default.post(name: .ItemBasketDidChanged, object: nil)
     }
 }
