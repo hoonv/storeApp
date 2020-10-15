@@ -284,7 +284,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="140" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="79J-Yh-4hP">
-                                <rect key="frame" x="0.0" y="42" width="414" height="694"/>
+                                <rect key="frame" x="0.0" y="32" width="414" height="704"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <connections>
                                     <outlet property="dataSource" destination="fcr-Lb-6gw" id="dN5-LX-Ckc"/>
@@ -292,7 +292,7 @@
                                 </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2uH-T4-y7f">
-                                <rect key="frame" x="20" y="20" width="19.666666666666671" height="22"/>
+                                <rect key="frame" x="20" y="10" width="19.666666666666671" height="22"/>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" image="arrow.backward" catalog="system"/>
                                 <connections>
@@ -308,6 +308,9 @@
                                 <state key="normal" title="Button">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="orderButtonOnTouch:" destination="fcr-Lb-6gw" eventType="touchUpInside" id="j61-Zo-pRg"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="1Ft-lg-JYX"/>
@@ -321,7 +324,7 @@
                             <constraint firstItem="79J-Yh-4hP" firstAttribute="top" secondItem="2uH-T4-y7f" secondAttribute="bottom" id="T7P-E9-J5I"/>
                             <constraint firstItem="1Ft-lg-JYX" firstAttribute="bottom" secondItem="Gmp-ci-jKP" secondAttribute="bottom" id="nmv-GX-TLw"/>
                             <constraint firstItem="1Ft-lg-JYX" firstAttribute="trailing" secondItem="Gmp-ci-jKP" secondAttribute="trailing" constant="20" id="x0K-XM-awJ"/>
-                            <constraint firstItem="2uH-T4-y7f" firstAttribute="top" secondItem="1Ft-lg-JYX" secondAttribute="top" constant="20" id="xqH-GA-r5E"/>
+                            <constraint firstItem="2uH-T4-y7f" firstAttribute="top" secondItem="1Ft-lg-JYX" secondAttribute="top" constant="10" id="xqH-GA-r5E"/>
                         </constraints>
                     </view>
                     <connections>
