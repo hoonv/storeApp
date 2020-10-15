@@ -10,7 +10,7 @@
 		0DD809610F5BC7C6A3A0CAAE /* Pods_StoreApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4D19E9982F21F644595CB70 /* Pods_StoreApp.framework */; };
 		E0172C87252AF56200A91671 /* SecureVerifyTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0172C86252AF56200A91671 /* SecureVerifyTextView.swift */; };
 		E0172C8C252AF69B00A91671 /* VerifyTextView+CharacterSpacing.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0172C8B252AF69B00A91671 /* VerifyTextView+CharacterSpacing.swift */; };
-		E0172CA2252B0E7100A91671 /* VerifyTextViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0172CA1252B0E7100A91671 /* VerifyTextViewDataSource.swift */; };
+		E0172CA2252B0E7100A91671 /* VerifyTextViewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0172CA1252B0E7100A91671 /* VerifyTextViewData.swift */; };
 		E0172CB3252B0F3500A91671 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0172CB2252B0F3500A91671 /* Notification.swift */; };
 		E0172CB8252B16EB00A91671 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0172CB7252B16EB00A91671 /* User.swift */; };
 		E0172CBD252B25A200A91671 /* ItemListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0172CBC252B25A200A91671 /* ItemListViewController.swift */; };
@@ -38,6 +38,8 @@
 		E08B294225381D6200AF25AD /* ItemBasketViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08B294125381D6200AF25AD /* ItemBasketViewModel.swift */; };
 		E08B294925382E6300AF25AD /* ItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08B294725382E6300AF25AD /* ItemTableViewCell.swift */; };
 		E08B294A25382E6300AF25AD /* ItemTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E08B294825382E6300AF25AD /* ItemTableViewCell.xib */; };
+		E08B2950253882EB00AF25AD /* alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08B294F253882EB00AF25AD /* alert.swift */; };
+		E08B295A2538B4C400AF25AD /* DetailViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08B29592538B4C400AF25AD /* DetailViewController+.swift */; };
 		E098887925370273004E5B11 /* DetailFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E098887825370273004E5B11 /* DetailFooterView.swift */; };
 		E098888325372D49004E5B11 /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E098888225372D49004E5B11 /* UIImageExtension.swift */; };
 		E098888E25374C18004E5B11 /* ItemBasketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E098888D25374C18004E5B11 /* ItemBasketViewController.swift */; };
@@ -123,7 +125,7 @@
 		36993FFEEFB52A8570A274B8 /* Pods-StoreApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StoreApp.debug.xcconfig"; path = "Target Support Files/Pods-StoreApp/Pods-StoreApp.debug.xcconfig"; sourceTree = "<group>"; };
 		E0172C86252AF56200A91671 /* SecureVerifyTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureVerifyTextView.swift; sourceTree = "<group>"; };
 		E0172C8B252AF69B00A91671 /* VerifyTextView+CharacterSpacing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VerifyTextView+CharacterSpacing.swift"; sourceTree = "<group>"; };
-		E0172CA1252B0E7100A91671 /* VerifyTextViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyTextViewDataSource.swift; sourceTree = "<group>"; };
+		E0172CA1252B0E7100A91671 /* VerifyTextViewData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyTextViewData.swift; sourceTree = "<group>"; };
 		E0172CB2252B0F3500A91671 /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 		E0172CB7252B16EB00A91671 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		E0172CBC252B25A200A91671 /* ItemListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListViewController.swift; sourceTree = "<group>"; };
@@ -159,6 +161,8 @@
 		E08B294125381D6200AF25AD /* ItemBasketViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemBasketViewModel.swift; sourceTree = "<group>"; };
 		E08B294725382E6300AF25AD /* ItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTableViewCell.swift; sourceTree = "<group>"; };
 		E08B294825382E6300AF25AD /* ItemTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemTableViewCell.xib; sourceTree = "<group>"; };
+		E08B294F253882EB00AF25AD /* alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = alert.swift; sourceTree = "<group>"; };
+		E08B29592538B4C400AF25AD /* DetailViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DetailViewController+.swift"; sourceTree = "<group>"; };
 		E098887825370273004E5B11 /* DetailFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailFooterView.swift; sourceTree = "<group>"; };
 		E098888225372D49004E5B11 /* UIImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
 		E098888D25374C18004E5B11 /* ItemBasketViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemBasketViewController.swift; sourceTree = "<group>"; };
@@ -256,6 +260,7 @@
 				E0172CB2252B0F3500A91671 /* Notification.swift */,
 				E0D0EBD0252DAE1B00116CFF /* StringExtension.swift */,
 				E098888225372D49004E5B11 /* UIImageExtension.swift */,
+				E08B294F253882EB00AF25AD /* alert.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -374,8 +379,8 @@
 				E07DA5D2252D676F00F3497B /* VerifyTextViewModel.swift */,
 				E0D0EBC3252D8CC500116CFF /* StoreItemViewModel.swift */,
 				E0D0EBDA252DE10400116CFF /* SignUpViewModel.swift */,
+				E0172CA1252B0E7100A91671 /* VerifyTextViewData.swift */,
 				E045B03D2535E93400CDB74B /* DetailStoreItemViewModel.swift */,
-				E0172CA1252B0E7100A91671 /* VerifyTextViewDataSource.swift */,
 				E08B294125381D6200AF25AD /* ItemBasketViewModel.swift */,
 			);
 			path = ViewModel;
@@ -412,6 +417,7 @@
 			isa = PBXGroup;
 			children = (
 				E0B6CFF72532F67B001B9EB5 /* DetailViewController.swift */,
+				E08B29592538B4C400AF25AD /* DetailViewController+.swift */,
 			);
 			path = ItemDetail;
 			sourceTree = "<group>";
@@ -724,13 +730,14 @@
 				E0B6CFF82532F67B001B9EB5 /* DetailViewController.swift in Sources */,
 				E0172C8C252AF69B00A91671 /* VerifyTextView+CharacterSpacing.swift in Sources */,
 				E0B6D0092533599A001B9EB5 /* ItemListViewController+CollectionView.swift in Sources */,
+				E08B295A2538B4C400AF25AD /* DetailViewController+.swift in Sources */,
 				E0C6D86F252979EA00A834E2 /* Validator.swift in Sources */,
 				E04AFA162521918A009E9F9A /* SignUpViewController.swift in Sources */,
 				E04AFA122521918A009E9F9A /* AppDelegate.swift in Sources */,
 				E045B0442535F24000CDB74B /* DetailDescriptionView.swift in Sources */,
 				E08B293C25380EDA00AF25AD /* ItemBasket.swift in Sources */,
 				E0172D01252C80A400A91671 /* ItemCollectionViewCell.swift in Sources */,
-				E0172CA2252B0E7100A91671 /* VerifyTextViewDataSource.swift in Sources */,
+				E0172CA2252B0E7100A91671 /* VerifyTextViewData.swift in Sources */,
 				E0172D08252C96EF00A91671 /* CollectionHeaderView.swift in Sources */,
 				E045B03E2535E93400CDB74B /* DetailStoreItemViewModel.swift in Sources */,
 				E0B6D0172533E0E4001B9EB5 /* FadeAnimator.swift in Sources */,
@@ -757,6 +764,7 @@
 				E098887925370273004E5B11 /* DetailFooterView.swift in Sources */,
 				E0B8C2EE253570A900E77874 /* ImageScrollView.swift in Sources */,
 				E0172CC8252C284F00A91671 /* SlideInAnimator.swift in Sources */,
+				E08B2950253882EB00AF25AD /* alert.swift in Sources */,
 				E0B6D000253358E4001B9EB5 /* SignUpViewController+TransitioningDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

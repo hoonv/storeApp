@@ -69,6 +69,7 @@ final class FadeAnimator: NSObject, UIViewControllerAnimatedTransitioning {
         if isPresenting {
             firstViewController.selectedCell?.imageView.image = nil
         }
+        
         let firstViewSnapshot = firstViewController.view.snapshotView(afterScreenUpdates: true) ?? UIView()
         let controllerImageViewRect = secondViewController.hiddenImageView.convert(secondViewController.hiddenImageView.bounds, to: window)
         let descriptionViewRect = secondViewController.descriptionView.convert(secondViewController.descriptionView.bounds, to: window)
@@ -77,7 +78,7 @@ final class FadeAnimator: NSObject, UIViewControllerAnimatedTransitioning {
         backgroundView.backgroundColor = secondViewController.view.backgroundColor
         backgoundViewRect.origin.y += descriptionViewRect.height
         toView.alpha = 0
-        
+
         [firstViewSnapshot,
          selectedCellImageViewSnapshot,
          controllerImageSnapshot,

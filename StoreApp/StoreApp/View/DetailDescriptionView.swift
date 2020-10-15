@@ -104,14 +104,14 @@ class DetailDescriptionView: UIView {
         ])
     }
     
-    func configure(viewModel: DetailViewModel) {
+    func configure(storeItem: StoreItem, percent: String?) {
         
-        title.text = viewModel.title
-        sPrice.text = viewModel.sPrice
+        title.text = storeItem.title
+        sPrice.text = storeItem.sPrice
         
-        if let nprice = viewModel.nPrice {
+        if let nprice = storeItem.nPrice {
             nPrice.attributedText = "\(nprice)원".addCancelLine()
-            salePercent.text = viewModel.salePercent
+            salePercent.text = percent ?? ""
         } else {
             nPrice.text = ""
             salePercent.text = ""
@@ -119,11 +119,11 @@ class DetailDescriptionView: UIView {
         }
     }
     
-    func configure(storeItem: DetailStoreItem) {
+    func configure(itemDetail: DetailStoreItem) {
         
-        let point = storeItem.data.point
-        let fee = storeItem.data.deliveryFee
-        let info = storeItem.data.deliveryInfo
+        let point = itemDetail.data.point
+        let fee = itemDetail.data.deliveryFee
+        let info = itemDetail.data.deliveryInfo
 
         pointButton.setTitle("💰 구매시 포인트 최대 \(point) 적립", for: .normal)
         deliveryInfo.text = "🚛 \(info)"
