@@ -40,12 +40,3 @@ class DetailViewModel {
     }
     
 }
-
-extension String {
-    func priceToInt() -> Int? {
-        let price = self.replacingOccurrences(of: "원", with: "")
-                        .replacingOccurrences(of: ",", with: "")
-        
-        return Int(price) ?? nil
-    }
-}
