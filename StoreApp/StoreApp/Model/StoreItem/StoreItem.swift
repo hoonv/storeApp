@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct StoreItem: Codable {
+struct StoreItem: Codable, Hashable {
     
     let detailHash: String
     let image: String
