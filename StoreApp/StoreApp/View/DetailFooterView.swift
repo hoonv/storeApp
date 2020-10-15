@@ -9,7 +9,7 @@ import UIKit
 
 class DetailFooterView: UIView {
 
-    let buyButton = UIButton()
+    let orderButton = UIButton()
     let basketButton = UIButton()
     
     override init(frame: CGRect) {
@@ -24,15 +24,14 @@ class DetailFooterView: UIView {
     
     
     func setup() {
-
         self.backgroundColor = .secondarySystemBackground
         self.addBorder(toEdges: [.top], color: UIColor.systemGray, thickness: 1)
-        buyButton.backgroundColor = .systemOrange
-        buyButton.translatesAutoresizingMaskIntoConstraints = false
-        buyButton.setTitle("구매하기", for: .normal)
-        buyButton.layer.cornerRadius = 5
-        buyButton.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .bold)
-        addSubview(buyButton)
+        orderButton.translatesAutoresizingMaskIntoConstraints = false
+        orderButton.backgroundColor = .systemOrange
+        orderButton.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .bold)
+        orderButton.setTitle("구매하기", for: .normal)
+        orderButton.layer.cornerRadius = 5
+        addSubview(orderButton)
         
         basketButton.backgroundColor = .white
         basketButton.translatesAutoresizingMaskIntoConstraints = false
@@ -42,10 +41,10 @@ class DetailFooterView: UIView {
         addSubview(basketButton)
         
         NSLayoutConstraint.activate([
-            buyButton.leadingAnchor.constraint(equalTo: basketButton.trailingAnchor , constant: 10),
-            buyButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
-            buyButton.topAnchor.constraint(equalTo: topAnchor, constant: 10),
-            buyButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10),
+            orderButton.leadingAnchor.constraint(equalTo: basketButton.trailingAnchor , constant: 10),
+            orderButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
+            orderButton.topAnchor.constraint(equalTo: topAnchor, constant: 10),
+            orderButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10),
 
             basketButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
             basketButton.widthAnchor.constraint(equalTo: basketButton.heightAnchor),
