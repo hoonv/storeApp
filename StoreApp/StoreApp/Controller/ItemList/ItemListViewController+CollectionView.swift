@@ -72,8 +72,8 @@ extension ItemListViewController: UICollectionViewDelegate, UICollectionViewData
                 as? ItemCollectionViewCell else { return UICollectionViewCell() }
         
         let item = itemViewModel.items[indexPath.section][indexPath.item]
-        cell.configure(with: item, badges: itemViewModel.badges, colors: badgeColors)
-        cell.imageView.setImageFromLocalOrNetwork(path: item.image, fileName: item.detailHash)
+        cell.configure(with: item, badges: itemViewModel.badges, colors: Constant.badgeColors)
+        cell.imageView.setImage(path: item.image, fileName: item.detailHash)
         return cell
     }
     

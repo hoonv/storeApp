@@ -28,7 +28,7 @@ extension URL {
 
 extension UIImageView {
     
-    func setImageFromLocalOrNetwork(path : String, fileName: String) {
+    func setImage(path : String, fileName: String) {
         guard let fileURL = try? FileManager.default.url(for: .cachesDirectory,
                                                          in: .userDomainMask,
                                                          appropriateFor: nil,
