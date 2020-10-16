@@ -56,3 +56,33 @@
 |                             메인                             |                            국찌개                            |
 | :----------------------------------------------------------: | :----------------------------------------------------------: |
 | <img width="300" alt="스크린샷 2020-10-07 오후 8 32 32" src="https://user-images.githubusercontent.com/46335714/95325494-3cc06080-08dc-11eb-9be8-36debb3c88c0.png"> | <img width="300" alt="스크린샷 2020-10-07 오후 8 34 02" src="https://user-images.githubusercontent.com/46335714/95325628-72654980-08dc-11eb-9666-29a44cbf1ad7.png"> |
+
+
+
+## 상세화면
+
+## Demo
+
+### Custom Transition 구현
+#### 정상속도
+![tran1](https://user-images.githubusercontent.com/46335714/95984269-e57f3a80-0e5d-11eb-98c3-86fa9ca6afbc.gif)
+
+
+
+#### 슬로우
+
+![tran2](https://user-images.githubusercontent.com/46335714/95984279-e87a2b00-0e5d-11eb-90a2-2b12f6734973.gif)
+
+
+
+### 장바구니 추가 화면
+
+<img width="300" alt="스크린샷 2020-10-16 오전 11 49 54" src="https://user-images.githubusercontent.com/46335714/96207248-b70c7700-0fa5-11eb-9a36-b8bb575a3116.png">
+
+
+
+
+
+### 장바구니 화면
+
+<img width="300" alt="스크린샷 2020-10-16 오전 11 49 22" src="https://user-images.githubusercontent.com/46335714/96207219-a3611080-0fa5-11eb-92f5-01f96cdc59e4.png">
